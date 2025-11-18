@@ -1,11 +1,11 @@
-🌟 Northstar — AI Systems Website (Design Prototype)
+# 🌟 Northstar — AI Systems Website (Design Prototype)
 
 A modern, animation-driven, multi-page website built with Flask and clean, minimalistic frontend design.
 Created as a full design + interaction prototype to simulate the feel of a high-end AI/creative studio brand.
 The project includes advanced UI features such as a splash-screen intro, scroll-synced text ticker, header shrink animations, fade-in sections, a custom 3-card rotating carousel, and optional parallax effects.
 
-🚀 Features
-✨ Modern UI + Animations
+# 🚀 Features
+# ✨ Modern UI + Animations
 
 
 Splash-screen intro (“Northstar ✦”) that transitions smoothly into the header
@@ -38,7 +38,7 @@ A fully custom 3-card carousel with next/previous positioning and transitions
 Optional background parallax (can toggle)
 
 
-🖼️ Visual Elements
+# 🖼️ Visual Elements
 
 
 High-resolution image cards (Automation, Design, Vision, Hero bg)
@@ -51,8 +51,8 @@ Clean typography (Poppins / Inter / Manrope)
 
 
 
-🧱 Project Structure
-'''
+# 🧱 Project Structure
+```
 KENS-WEBSITE/
 ├── app.py
 ├── Procfile
@@ -77,9 +77,9 @@ KENS-WEBSITE/
         ├── design.jpg
         ├── hero.jpg
         └── vision.jpg
-'''
+```
 
-🧰 Tech Stack
+# 🧰 Tech Stack
 Backend
 
 
@@ -114,7 +114,7 @@ GitHub repo auto-deploy integration
 
 
 
-🔧 Run the Project Locally
+# 🔧 Run the Project Locally
 Clone the repo:
 git clone https://github.com/MoejoMan/Northstar-Test-Website.git
 cd Northstar-Test-Website
@@ -129,13 +129,13 @@ Then open:
 http://127.0.0.1:5000
 
 
-🌐 Deployment (Render)
+# 🌐 Deployment (Render)
 This project includes a Procfile, allowing Render to auto-detect and run:
 gunicorn app:app
 
 Just connect your GitHub repo → Render will auto-deploy on each push.
 
-⚡ Future Ideas
+# ⚡ Future Ideas
 
 
 Background video splash
