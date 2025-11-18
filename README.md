@@ -1,4 +1,5 @@
 🌟 Northstar — AI Systems Website (Design Prototype)
+
 A modern, animation-driven, multi-page website built with Flask and clean, minimalistic frontend design.
 Created as a full design + interaction prototype to simulate the feel of a high-end AI/creative studio brand.
 The project includes advanced UI features such as a splash-screen intro, scroll-synced text ticker, header shrink animations, fade-in sections, a custom 3-card rotating carousel, and optional parallax effects.
@@ -51,6 +52,7 @@ Clean typography (Poppins / Inter / Manrope)
 
 
 🧱 Project Structure
+'''
 KENS-WEBSITE/
 ├── app.py
 ├── Procfile
@@ -75,7 +77,7 @@ KENS-WEBSITE/
         ├── design.jpg
         ├── hero.jpg
         └── vision.jpg
-
+'''
 
 🧰 Tech Stack
 Backend
