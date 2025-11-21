@@ -250,4 +250,45 @@ window.addEventListener('scroll', () => {
     });
   });
 
+
+  // -----------------------
+  // Feature suite activation + parallax
+  // -----------------------
+  const featureSection = document.querySelector('#feature-suite');
+
+  if (featureSection) {
+    const featureObserver = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            featureSection.classList.add('is-active');
+            document.body.classList.add('features-mode');
+          } else {
+            featureSection.classList.remove('is-active');
+            document.body.classList.remove('features-mode');
+          }
+        });
+      },
+      { threshold: 0.35 }
+    );
+
+    featureObserver.observe(featureSection);
+
+    const parallaxTargets = featureSection.querySelectorAll('[data-parallax] img');
+
+    parallaxTargets.forEach(img => {
+      img.addEventListener('mousemove', e => {
+        const rect = img.getBoundingClientRect();
+        const x = (e.clientX - rect.left) / rect.width - 0.5;
+        const y = (e.clientY - rect.top) / rect.height - 0.5;
+
+        img.style.transform = `scale(1.06) translate(${x * 16}px, ${y * 16}px)`;
+      });
+
+      img.addEventListener('mouseleave', () => {
+        img.style.transform = 'scale(1.03) translate(0, 0)';
+      });
+    });
+  }
+
 });
