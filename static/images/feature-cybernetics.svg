@@ -1,0 +1,25 @@
+<svg width="1200" height="800" viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg" fill="none">
+  <defs>
+    <linearGradient id="c1" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#120318"/>
+      <stop offset="45%" stop-color="#23092f"/>
+      <stop offset="100%" stop-color="#0c0a14"/>
+    </linearGradient>
+    <radialGradient id="c2" cx="70%" cy="30%" r="40%">
+      <stop offset="0%" stop-color="#ff6bda" stop-opacity="0.95"/>
+      <stop offset="60%" stop-color="#120318" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="cgrid" width="60" height="60" patternUnits="userSpaceOnUse">
+      <path d="M60 0H0V60" stroke="#ff9cf0" stroke-opacity="0.16" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="800" fill="url(#c1)"/>
+  <rect width="1200" height="800" fill="url(#cgrid)"/>
+  <rect x="180" y="180" width="840" height="440" rx="28" stroke="#ff6bda" stroke-width="4" stroke-opacity="0.5" fill="#1b0e28" fill-opacity="0.5"/>
+  <rect x="230" y="230" width="740" height="340" rx="20" stroke="#ffcdf7" stroke-width="2" stroke-dasharray="10 10" stroke-opacity="0.5"/>
+  <circle cx="820" cy="320" r="140" fill="url(#c2)"/>
+  <path d="M260 340L500 340L580 460H320Z" fill="#ff9cf0" fill-opacity="0.08" stroke="#ff8ee7" stroke-opacity="0.35" stroke-width="2"/>
+  <path d="M520 320C620 250 740 250 860 320" stroke="#ffc6f7" stroke-width="3" stroke-dasharray="12 10" stroke-linecap="round" opacity="0.6"/>
+  <path d="M420 500H920" stroke="#ffb6ee" stroke-width="2" stroke-dasharray="6 12" stroke-linecap="round" opacity="0.6"/>
+  <text x="260" y="520" fill="#ffd9fb" font-family="'Manrope','Inter',sans-serif" font-size="44" letter-spacing="4">CYBERNETIC CORE</text>
+</svg>
