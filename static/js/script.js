@@ -277,16 +277,27 @@ window.addEventListener('scroll', () => {
       }
     };
 
-    const featureObserver = new IntersectionObserver(
-      entries => {
-        entries.forEach(entry => {
-          ensureFeatureState(entry.isIntersecting);
-        });
-      },
-      { threshold: 0.35 }
-    );
+    const manualCheck = () => {
+      const rect = featureSection.getBoundingClientRect();
+      const viewport = window.innerHeight || document.documentElement.clientHeight;
+      const inView = rect.top < viewport * 0.8 && rect.bottom > viewport * 0.2;
 
-    featureObserver.observe(featureSection);
+      ensureFeatureState(inView);
+    };
+
+    // Primary observer path (with passive scroll fallback)
+    if ('IntersectionObserver' in window) {
+      const featureObserver = new IntersectionObserver(
+        entries => {
+          entries.forEach(entry => {
+            ensureFeatureState(entry.isIntersecting);
+          });
+        },
+        { threshold: 0.35 }
+      );
+
+      featureObserver.observe(featureSection);
+    }
 
     const parallaxTargets = featureSection.querySelectorAll('[data-parallax] img');
 
@@ -304,16 +315,13 @@ window.addEventListener('scroll', () => {
       });
     });
 
-    const manualCheck = () => {
-      const rect = featureSection.getBoundingClientRect();
-      const viewport = window.innerHeight || document.documentElement.clientHeight;
-      const inView = rect.top < viewport * 0.8 && rect.bottom > viewport * 0.2;
-
-      ensureFeatureState(inView);
-    };
-
-    // Kick off an initial state check and listen for layout changes
+    // Kick off early state checks and repeat once the page is fully laid out
     requestAnimationFrame(manualCheck);
+    window.addEventListener('load', () => {
+      manualCheck();
+      setTimeout(manualCheck, 250);
+    });
+
     window.addEventListener('resize', manualCheck);
     window.addEventListener('scroll', manualCheck, { passive: true });
   }
