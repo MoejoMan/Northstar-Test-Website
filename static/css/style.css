@@ -900,13 +900,13 @@ footer {
 .tech-frame .bl { bottom: 0; left: 0; border-right: none; border-top: none; }
 .tech-frame .br { bottom: 0; right: 0; border-left: none; border-top: none; }
 
-.feature-text h3 {
+.feature-suite .feature-text h3 {
   color: #f6f8ff;
   margin-bottom: 10px;
   letter-spacing: 0.05em;
 }
 
-.feature-text p {
+.feature-suite .feature-text p {
   color: rgba(222, 229, 247, 0.82);
   margin: 0;
   max-width: 520px;
@@ -916,6 +916,14 @@ footer {
 .feature-block.right .feature-text p,
 .feature-block.right .feature-text h3 {
   margin-left: auto;
+}
+
+.features-section .feature-text h3 {
+  color: #0a0c12;
+}
+
+.features-section .feature-text p {
+  color: #0f1420;
 }
 
 @media (max-width: 960px) {

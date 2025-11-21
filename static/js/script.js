@@ -266,16 +266,21 @@ window.addEventListener('scroll', () => {
   const featureSection = document.querySelector('#feature-suite');
 
   if (featureSection) {
+    const featureBlocks = featureSection.querySelectorAll('.feature-block');
+
+    const ensureFeatureState = inView => {
+      featureSection.classList.toggle('is-active', inView);
+      document.body.classList.toggle('features-mode', inView);
+
+      if (inView) {
+        featureBlocks.forEach(block => block.classList.add('visible'));
+      }
+    };
+
     const featureObserver = new IntersectionObserver(
       entries => {
         entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            featureSection.classList.add('is-active');
-            document.body.classList.add('features-mode');
-          } else {
-            featureSection.classList.remove('is-active');
-            document.body.classList.remove('features-mode');
-          }
+          ensureFeatureState(entry.isIntersecting);
         });
       },
       { threshold: 0.35 }
@@ -298,6 +303,19 @@ window.addEventListener('scroll', () => {
         img.style.transform = 'scale(1.03) translate(0, 0)';
       });
     });
+
+    const manualCheck = () => {
+      const rect = featureSection.getBoundingClientRect();
+      const viewport = window.innerHeight || document.documentElement.clientHeight;
+      const inView = rect.top < viewport * 0.8 && rect.bottom > viewport * 0.2;
+
+      ensureFeatureState(inView);
+    };
+
+    // Kick off an initial state check and listen for layout changes
+    requestAnimationFrame(manualCheck);
+    window.addEventListener('resize', manualCheck);
+    window.addEventListener('scroll', manualCheck, { passive: true });
   }
 
 });
