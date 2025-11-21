@@ -65,19 +65,28 @@ window.addEventListener('scroll', () => {
 
   if (splash) {
     const logo = splash.querySelector('.splash-logo');
+    let splashClosed = false;
     document.body.classList.add('splash-active');
 
-    if (logo) {
-      logo.addEventListener('animationend', () => {
-        splash.classList.add('splash-hide');
-        document.body.classList.remove('splash-active');
-        document.body.classList.add('splash-done');
+    const closeSplash = () => {
+      if (splashClosed) return;
+      splashClosed = true;
+      splash.classList.add('splash-hide');
+      document.body.classList.remove('splash-active');
+      document.body.classList.add('splash-done');
 
-        setTimeout(() => {
-          splash.remove();
-        }, 650);
-      });
+      setTimeout(() => {
+        splash.remove();
+      }, 650);
+    };
+
+    // Primary path: use the logo animation end to close the splash
+    if (logo) {
+      logo.addEventListener('animationend', closeSplash);
     }
+
+    // Fallback: ensure the splash clears even if animations are disabled
+    setTimeout(closeSplash, 2000);
   }
 
 
@@ -257,22 +266,38 @@ window.addEventListener('scroll', () => {
   const featureSection = document.querySelector('#feature-suite');
 
   if (featureSection) {
-    const featureObserver = new IntersectionObserver(
-      entries => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            featureSection.classList.add('is-active');
-            document.body.classList.add('features-mode');
-          } else {
-            featureSection.classList.remove('is-active');
-            document.body.classList.remove('features-mode');
-          }
-        });
-      },
-      { threshold: 0.35 }
-    );
+    const featureBlocks = featureSection.querySelectorAll('.feature-block');
 
-    featureObserver.observe(featureSection);
+    const ensureFeatureState = inView => {
+      featureSection.classList.toggle('is-active', inView);
+      document.body.classList.toggle('features-mode', inView);
+
+      if (inView) {
+        featureBlocks.forEach(block => block.classList.add('visible'));
+      }
+    };
+
+    const manualCheck = () => {
+      const rect = featureSection.getBoundingClientRect();
+      const viewport = window.innerHeight || document.documentElement.clientHeight;
+      const inView = rect.top < viewport * 0.8 && rect.bottom > viewport * 0.2;
+
+      ensureFeatureState(inView);
+    };
+
+    // Primary observer path (with passive scroll fallback)
+    if ('IntersectionObserver' in window) {
+      const featureObserver = new IntersectionObserver(
+        entries => {
+          entries.forEach(entry => {
+            ensureFeatureState(entry.isIntersecting);
+          });
+        },
+        { threshold: 0.35 }
+      );
+
+      featureObserver.observe(featureSection);
+    }
 
     const parallaxTargets = featureSection.querySelectorAll('[data-parallax] img');
 
@@ -289,6 +314,16 @@ window.addEventListener('scroll', () => {
         img.style.transform = 'scale(1.03) translate(0, 0)';
       });
     });
+
+    // Kick off early state checks and repeat once the page is fully laid out
+    requestAnimationFrame(manualCheck);
+    window.addEventListener('load', () => {
+      manualCheck();
+      setTimeout(manualCheck, 250);
+    });
+
+    window.addEventListener('resize', manualCheck);
+    window.addEventListener('scroll', manualCheck, { passive: true });
   }
 
 });
