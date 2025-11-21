@@ -1,0 +1,24 @@
+<svg width="1200" height="800" viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg" fill="none">
+  <defs>
+    <linearGradient id="a1" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#071d1a"/>
+      <stop offset="50%" stop-color="#0a3b2f"/>
+      <stop offset="100%" stop-color="#041211"/>
+    </linearGradient>
+    <radialGradient id="a2" cx="55%" cy="45%" r="45%">
+      <stop offset="0%" stop-color="#52ffd2" stop-opacity="0.9"/>
+      <stop offset="70%" stop-color="#041211" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="agrid" width="55" height="55" patternUnits="userSpaceOnUse">
+      <path d="M55 0H0V55" stroke="#70ffd6" stroke-opacity="0.16" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="800" fill="url(#a1)"/>
+  <rect width="1200" height="800" fill="url(#agrid)"/>
+  <circle cx="360" cy="260" r="180" fill="url(#a2)"/>
+  <path d="M260 520C360 420 520 420 640 520" stroke="#8cffe0" stroke-width="3" stroke-dasharray="12 10" stroke-linecap="round" opacity="0.6"/>
+  <path d="M520 320L720 420L520 520L320 420Z" fill="#48ffd2" fill-opacity="0.08" stroke="#68ffd7" stroke-opacity="0.4" stroke-width="2"/>
+  <path d="M780 300C900 320 980 380 1020 460" stroke="#7cffe0" stroke-width="2" stroke-dasharray="6 12" stroke-linecap="round" opacity="0.55"/>
+  <rect x="420" y="560" width="420" height="120" rx="22" fill="#082620" fill-opacity="0.7" stroke="#4fffd0" stroke-opacity="0.4" stroke-width="2"/>
+  <text x="450" y="634" fill="#c7ffef" font-family="'Manrope','Inter',sans-serif" font-size="44" letter-spacing="4">ADAPTIVE CONTROL</text>
+</svg>
