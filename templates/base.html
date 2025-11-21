@@ -13,11 +13,12 @@
 <body>
 <header id="main-header">
     <h1 class="site-title">
-    <a href="{{ url_for('home') }}" class="header-logo">
-      <span class="header-star">✦</span>
-      <span class="header-text">Northstar</span>
-    </a>
-  </h1>
+  <a href="{{ url_for('home') }}" class="logo-link">
+    <span class="header-star">✦</span>
+    <span class="header-text">Northstar</span>
+  </a>
+</h1>
+
   <nav id="main-nav">
     <ul>
       {% if request.endpoint != 'home' %}

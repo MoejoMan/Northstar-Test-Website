@@ -95,13 +95,15 @@ body.splash-done .site-title {
 }
 
 .header-star {
-  font-size: 1.4rem;
+  font-size: 0.9em;
   line-height: 1;
+  transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  display: inline-block;
   margin-top: -2px;
 }
 
 .header-text {
-  font-size: 1.9rem;
+  font-size: clamp(1rem, 2.1vw, 1.55rem);
 }
 
 #main-header.shrink .header-logo {
@@ -170,7 +172,7 @@ nav a:hover {
 }
 
 main {
-  padding: 0px 0px 300px;
+  padding: 0px 30px 100px;
   text-align: center;
   background: #ededed;
   color: #000000;
@@ -286,7 +288,8 @@ main {
 .showcase-card img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: cover;     /* <- keeps it clean and contained */
+  object-position: center; /* <- centers the good stuff */
   border-radius: 12px;
 
   filter: grayscale(100%) brightness(0.9);
@@ -296,6 +299,7 @@ main {
   transition: filter 1s ease, transform 1.2s ease;
   animation: showcaseZoom 16s ease-out infinite alternate;
 }
+
 
 .showcase-card.active img {
   filter: grayscale(0%) brightness(1);
@@ -339,6 +343,11 @@ main {
   top: 0;
   z-index: 10;
 
+  #main-header .site-title {
+  font-size: initial;
+}
+
+
   background: rgba(238, 241, 255, 0.65);     
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);        
@@ -358,7 +367,7 @@ main {
 
 
 .site-title {
-  font-size: 2rem;
+  font-size: clamp(1.3rem, 2.5vw, 1.8rem);
   margin: 0;
   transition: font-size 0.4s ease, transform 0.4s ease;
 }
@@ -428,15 +437,24 @@ main {
 }
 
 .logo-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.21em;
+  text-transform: uppercase;
+  color: #111;
   text-decoration: none;
-  color: inherit;
 }
 
 .logo-link:hover .star-icon {
   transform: rotate(45deg) scale(1.1);
 }
 
-
+.logo-link:hover .header-star {
+  transform: rotate(45deg) scale(1.1);
+}
 
 .scroll-banner {
   position: relative;
@@ -462,6 +480,7 @@ main {
   --offset: 0px;
   transform: translate3d(var(--offset), 0, 0);
   will-change: transform;
+  backface-visibility: hidden;
 }
 
 .loop {
@@ -512,7 +531,7 @@ main {
   transform: scaleX(0);
   opacity: 0;
   transition:
-    transform 3s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 7s cubic-bezier(0.22, 1, 0.36, 1), /*/ adjust here for speed of underline*/
     opacity 0.6s ease;
 }
 
@@ -525,7 +544,7 @@ main {
 .hero-gradient {
   position: relative;
   z-index: 0;
-  padding-bottom: 120px;   
+  padding-bottom: 40px;   
 }
 
 .hero-gradient::before {
@@ -541,6 +560,135 @@ main {
   z-index: -1;
   pointer-events: none;
 }
+
+
+/* ===== FEATURES SECTION ===== */
+
+.features-section {
+  width: 100%;
+  max-width: 1100px;
+  margin: 180px auto;
+  padding: 0 30px;
+}
+
+.features-title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 80px;
+  position: relative;
+  color: #111;
+}
+
+.features-underline {
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  width: 0;
+  height: 3px;
+  background: #111;
+  transform: translateX(-50%);
+  opacity: 0.25;
+  transition: width 2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.features-title.visible .features-underline {
+  width: 220px;
+}
+
+/* Blocks */
+.feature-block {
+  display: flex;
+  align-items: center;
+  margin: 160px 0;
+  gap: 50px;
+  opacity: 0;
+  transform: translateY(60px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.feature-block.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.feature-block.left {
+  flex-direction: row;
+}
+
+.feature-block.right {
+  flex-direction: row-reverse;
+}
+
+/* Image + tech frame */
+.feature-image {
+  position: relative;
+  width: 440px;
+  height: 450px;  /* was 310px */
+  overflow: hidden;
+  border-radius: 14px;
+}
+
+
+
+.feature-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 55%; /* adjust Y until perfect */
+  filter: grayscale(40%) brightness(1);
+  transition: transform 1s ease, filter 1s ease;
+}
+
+
+
+.feature-image:hover img {
+  transform: scale(1.07);
+  filter: grayscale(0%) brightness(1.05);
+}
+
+/* Tech frame overlay */
+.tech-frame {
+  position: absolute;
+  inset: 0;
+  border: 2px solid rgba(0,0,0,0.35);
+  border-radius: 14px;
+  pointer-events: none;
+  box-shadow:
+    0 0 20px rgba(0,0,0,0.08),
+    inset 0 0 12px rgba(0,0,0,0.08);
+  clip-path: polygon(
+      8% 0%, 92% 0%,
+      100% 8%, 100% 92%,
+      92% 100%, 8% 100%,
+      0% 92%, 0% 8%
+  );
+}
+
+/* Text */
+.feature-text {
+  max-width: 460px;
+}
+
+.feature-text h3 {
+  font-size: 1.6rem;
+  letter-spacing: 0.08em;
+  margin-bottom: 12px;
+}
+
+.feature-text p {
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+/* Parallax */
+.feature-image[data-parallax] img {
+  transform: translateY(var(--pY, 0px));
+  will-change: transform;
+  transition: transform 0.2s ease-out;
+}
+
 
 
 

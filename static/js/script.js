@@ -35,6 +35,29 @@ document.addEventListener('DOMContentLoaded', () => {
     .forEach(el => fadeObserver.observe(el));
 
 
+  // === Feature section fade-in ===
+document.querySelectorAll('.feature-block').forEach(block => {
+  fadeObserver.observe(block);
+});
+
+// === Title underline activation ===
+const featuresTitle = document.querySelector('.features-title');
+if (featuresTitle) fadeObserver.observe(featuresTitle);
+
+// === Parallax for feature images ===
+const parallaxImgs = document.querySelectorAll('.feature-image[data-parallax] img');
+
+window.addEventListener('scroll', () => {
+  parallaxImgs.forEach(img => {
+    const rect = img.parentElement.getBoundingClientRect();
+    const offset = (rect.top - window.innerHeight * 0.5) * -0.05;
+    img.style.setProperty('--pY', `${offset}px`);
+  });
+});
+
+
+
+
   // -----------------------
   // Splash screen
   // -----------------------
@@ -56,6 +79,8 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
   }
+
+
 
   // -----------------------
   // Header shrink + hide nav
@@ -120,7 +145,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   // -----------------------
-  // Scroll-reactive ticker
+  // Scroll-reactive ticker (smooth)
   // -----------------------
   const tracks = document.querySelectorAll('[data-ticker-track]');
   if (tracks.length) {
@@ -128,8 +153,9 @@ document.addEventListener('DOMContentLoaded', () => {
       '(prefers-reduced-motion: reduce)'
     ).matches;
     if (!reduce) {
-      let lastY = window.scrollY;
-      let x = 0;
+      let lastY   = window.scrollY;
+      let targetX = 0;  
+      let currentX = 0;  
 
       const update = () => {
         tracks.forEach(track => {
@@ -137,9 +163,10 @@ document.addEventListener('DOMContentLoaded', () => {
           if (!loop) return;
           const loopW = loop.offsetWidth || 1;
 
-          let localX = x;
+          let localX = currentX;
+
           while (localX <= -loopW) localX += loopW;
-          while (localX >= 0) localX -= loopW;
+          while (localX >= 0)      localX -= loopW;
 
           track.style.setProperty('--offset', `${localX}px`);
         });
@@ -148,21 +175,26 @@ document.addEventListener('DOMContentLoaded', () => {
       const onScroll = () => {
         const y = window.scrollY;
         const delta = y - lastY;
-        x -= delta * 0.3;
-        update();
+
+        targetX -= delta * 0.6;  // tweak this factor for more/less reaction
+
         lastY = y <= 0 ? 0 : y;
       };
 
-      update();
-      window.addEventListener(
-        'scroll',
-        () => requestAnimationFrame(onScroll),
-        { passive: true }
-      );
+      const animate = () => {
+        const smoothing = 0.12; // lower = smoother, higher = snappier
+        currentX += (targetX - currentX) * smoothing;
+        update();
+        requestAnimationFrame(animate);
+      };
 
+      update();
+      window.addEventListener('scroll', onScroll, { passive: true });
       window.addEventListener('resize', update);
+      animate();
     }
   }
+
 
 
   // -----------------------
