@@ -577,7 +577,7 @@ footer {
 .feature-suite {
   position: relative;
   max-width: 1200px;
-  margin: 0 auto;
+  margin: 120px auto;
   padding: 120px 60px;
   text-align: left;
   color: inherit;
@@ -589,50 +589,6 @@ footer {
   border-radius: 28px;
   overflow: hidden;
   isolation: isolate;
-}
-
-.feature-band {
-  position: relative;
-  margin: 120px 0;
-  padding: 140px 0;
-  background: linear-gradient(160deg, rgba(3, 5, 10, 0.94) 0%, rgba(6, 9, 16, 0.98) 60%, rgba(8, 12, 22, 0.9) 100%);
-  color: #e7edf9;
-  overflow: hidden;
-}
-
-.feature-band::before,
-.feature-band::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background: radial-gradient(circle at 20% 20%, rgba(46, 109, 255, 0.12), transparent 32%),
-              radial-gradient(circle at 80% 35%, rgba(0, 255, 207, 0.08), transparent 34%);
-  opacity: 0.35;
-}
-
-.feature-band::after {
-  background: repeating-linear-gradient(
-      90deg,
-      rgba(255, 255, 255, 0.06),
-      rgba(255, 255, 255, 0.06) 1px,
-      transparent 1px,
-      transparent 18px
-    ),
-    repeating-linear-gradient(
-      0deg,
-      rgba(255, 255, 255, 0.05),
-      rgba(255, 255, 255, 0.05) 1px,
-      transparent 1px,
-      transparent 18px
-    );
-  mask-image: radial-gradient(circle at center, rgba(255, 255, 255, 0.2), transparent 70%);
-  opacity: 0.14;
-}
-
-.feature-band > .feature-suite {
-  position: relative;
-  z-index: 1;
 }
 
 .feature-suite::before,
