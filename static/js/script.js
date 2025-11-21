@@ -65,19 +65,28 @@ window.addEventListener('scroll', () => {
 
   if (splash) {
     const logo = splash.querySelector('.splash-logo');
+    let splashClosed = false;
     document.body.classList.add('splash-active');
 
-    if (logo) {
-      logo.addEventListener('animationend', () => {
-        splash.classList.add('splash-hide');
-        document.body.classList.remove('splash-active');
-        document.body.classList.add('splash-done');
+    const closeSplash = () => {
+      if (splashClosed) return;
+      splashClosed = true;
+      splash.classList.add('splash-hide');
+      document.body.classList.remove('splash-active');
+      document.body.classList.add('splash-done');
 
-        setTimeout(() => {
-          splash.remove();
-        }, 650);
-      });
+      setTimeout(() => {
+        splash.remove();
+      }, 650);
+    };
+
+    // Primary path: use the logo animation end to close the splash
+    if (logo) {
+      logo.addEventListener('animationend', closeSplash);
     }
+
+    // Fallback: ensure the splash clears even if animations are disabled
+    setTimeout(closeSplash, 2000);
   }
 
 
