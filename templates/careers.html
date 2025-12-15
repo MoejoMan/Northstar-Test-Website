@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+{% block title %}Careers | Northstar{% endblock %}
+{% block content %}
+
+<div id="splash">
+  <div class="splash-logo">
+    <span class="splash-star">✦</span>
+    <span class="splash-text">Northstar</span>
+  </div>
+</div>
+
+<section class="hero-gradient">
+  <div class="typewriter-container">
+    <h1 class="typewriter typewriter-animation">Bridging Humanity and Technology</h1>
+  </div>
+</section>
+
+<section class="intro">
+  <h2>Careers</h2>
+  <p>
+    We’re building secure, intelligent systems — and we’re looking for people
+    who care about how things work under the hood.
+  </p>
+</section>
+
+<hr class="divider">
+<section class="features-section">
+  <h2 class="features-title">
+    Open Roles
+    <span class="features-underline"></span>
+  </h2>
+
+  <div class="feature-block left">
+    <div class="feature-text">
+      <h3>Security Engineer</h3>
+      <p>
+        Design and defend our systems against real-world threats. You’ll work
+        across infrastructure, applications, and incident response.
+      </p>
+    </div>
+
+    <div class="feature-image">
+      <img src="/static/images/security.jpg" alt="Security engineering">
+      <div class="tech-frame"></div>
+    </div>
+  </div>
+
+  <div class="feature-block right">
+    <div class="feature-text">
+      <h3>AI / Machine Learning Engineer</h3>
+      <p>
+        Build, train, and deploy models that solve meaningful problems —
+        responsibly and at scale.
+      </p>
+    </div>
+
+    <div class="feature-image">
+      <img src="/static/images/ai.jpg" alt="Machine learning systems">
+      <div class="tech-frame"></div>
+    </div>
+  </div>
+
+</section>
+
+<section class="feature-suite">
+  <span class="eyebrow">Careers</span>
+  <h2>Speculative Applications</h2>
+  <p class="feature-lede">
+    Don’t see a role that fits? If you think you’d bring something valuable,
+    we’d still like to hear from you.
+  </p>
+</section>
+
+
+{% endblock %}
+{% block body_class %}page-careers{% endblock %}

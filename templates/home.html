@@ -1,0 +1,194 @@
+{% extends 'base.html' %}
+{% block title %}Home | Northstar{% endblock %}
+{% block content %}
+
+<div id="splash">
+  <div class="splash-logo">
+    <span class="splash-star">✦</span>
+    <span class="splash-text">Northstar</span>
+  </div>
+</div>
+
+<section class="hero-gradient">
+  <div class="typewriter-container">
+    <h1 class="typewriter typewriter-animation">Bridging Humanity and Technology</h1>
+  </div>
+
+  <section class="hero">
+    <p>Northstar develops next-generation augmentation systems, where biology meets engineered precision.</p>
+  </section>
+
+  <div class="scroll-cue">
+    <span></span>
+  </div>
+
+
+  <section class="intro fade-in">
+    <h2>Who We Are</h2>
+    <p>
+      Northstar is a human-augmentation research studio focused on advanced prosthetics, neural interfaces, and sensory enhancement technologies.
+We create systems that don’t replace human ability—
+they extend it.
+    </p>
+  </section>
+</section>
+
+<hr class="divider">
+
+<section class="showcase fade-in">
+  <div class="showcase-card">
+    <img src="{{ url_for('static', filename='images/automation.jpg') }}" alt="Automation">
+    <h3>Automation</h3>
+    <p>Responsive limb systems that learn movement patterns and adapt to each user’s physiology.</p>
+  </div>
+
+  <div class="showcase-card">
+    <img src="{{ url_for('static', filename='images/vision.jpg') }}" alt="Vision">
+    <h3>Vision</h3>
+    <p>Real-time interpretation of motor intention with high-fidelity signal mapping.</p>
+  </div>
+
+  <div class="showcase-card">
+    <img src="{{ url_for('static', filename='images/design.jpg') }}" alt="Design">
+    <h3>Neural Design</h3>
+    <p>Biocompatible interfaces that fuse engineered hardware with organic motion.</p>
+  </div>
+</section>
+
+
+<section class="scroll-banner" aria-hidden="true">
+  <div class="ticker">
+    <div class="ticker-track" data-ticker-track>
+      <div class="loop">
+        <span>NORTHSTAR</span><span>NORTHSTAR</span><span>NORTHSTAR</span>
+        <span>NORTHSTAR</span><span>NORTHSTAR</span><span>NORTHSTAR</span>
+        <span>NORTHSTAR</span><span>NORTHSTAR</span><span>NORTHSTAR</span>
+      </div>
+      <div class="loop" aria-hidden="true">
+        <span>NORTHSTAR</span><span>NORTHSTAR</span><span>NORTHSTAR</span>
+        <span>NORTHSTAR</span><span>NORTHSTAR</span><span>NORTHSTAR</span>
+        <span>NORTHSTAR</span><span>NORTHSTAR</span><span>NORTHSTAR</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="ticker ticker-secondary">
+    <div class="ticker-track" data-ticker-track>
+      <div class="loop">
+        <span>ADAPTIVE INTELLIGENCE</span><span>ADAPTIVE INTELLIGENCE</span>
+        <span>ADAPTIVE INTELLIGENCE</span><span>ADAPTIVE INTELLIGENCE</span>
+        <span>ADAPTIVE INTELLIGENCE</span><span>ADAPTIVE INTELLIGENCE</span>
+      </div>
+      <div class="loop" aria-hidden="true">
+        <span>ADAPTIVE INTELLIGENCE</span><span>ADAPTIVE INTELLIGENCE</span>
+        <span>ADAPTIVE INTELLIGENCE</span><span>ADAPTIVE INTELLIGENCE</span>
+        <span>ADAPTIVE INTELLIGENCE</span><span>ADAPTIVE INTELLIGENCE</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+  <section class="feature-suite fade-in" id="feature-suite">
+    <div class="feature-heading">
+      <p class="eyebrow">Neuro-mechanical systems</p>
+      <h2>Interfaces that respond like instinct</h2>
+      <p class="feature-lede">
+        Each module is tuned for real-time responsiveness, protective stability, and
+        a sense of ceremony—so every interaction feels intentional and alive.
+      </p>
+    </div>
+
+    <div class="feature-grid">
+      <article class="feature-block left">
+        <div class="feature-meta">
+          <span class="feature-index">001</span>
+          <span class="feature-tag">Neural Mapping</span>
+        </div>
+
+        <div class="feature-image" data-parallax>
+          <img src="{{ url_for('static', filename='images/feature-neural.jpg') }}" alt="Neural Mapping" loading="lazy">
+          <div class="tech-frame">
+            <span class="corner tl"></span>
+            <span class="corner tr"></span>
+            <span class="corner bl"></span>
+            <span class="corner br"></span>
+          </div>
+        </div>
+
+        <div class="feature-text">
+          <h3>Neural Response Mapping</h3>
+          <p>
+            Our adaptive implants analyze micro-signals and reconstruct motor intention with
+            sub-millisecond latency—creating seamless brain-to-machine synergy.
+          </p>
+        </div>
+      </article>
+
+      <article class="feature-block right">
+        <div class="feature-meta">
+          <span class="feature-index">002</span>
+          <span class="feature-tag">Cybernetics</span>
+        </div>
+
+        <div class="feature-image" data-parallax>
+          <img src="{{ url_for('static', filename='images/feature-cybernetics.jpg') }}" alt="Precision Cybernetics" loading="lazy">
+          <div class="tech-frame">
+            <span class="corner tl"></span>
+            <span class="corner tr"></span>
+            <span class="corner bl"></span>
+            <span class="corner br"></span>
+          </div>
+        </div>
+
+        <div class="feature-text">
+          <h3>Precision Cybernetics</h3>
+          <p>
+            Reinforced carbon-mesh frameworks paired with neural dampening coils allow for stable,
+            high-torque limb assistance without biological strain.
+          </p>
+        </div>
+      </article>
+
+      <article class="feature-block left">
+        <div class="feature-meta">
+          <span class="feature-index">003</span>
+          <span class="feature-tag">Adaptive Control</span>
+        </div>
+
+        <div class="feature-image" data-parallax>
+          <img src="{{ url_for('static', filename='images/feature-adaptive.jpg') }}" alt="Adaptive Control" loading="lazy">
+          <div class="tech-frame">
+            <span class="corner tl"></span>
+            <span class="corner tr"></span>
+            <span class="corner bl"></span>
+            <span class="corner br"></span>
+          </div>
+        </div>
+
+        <div class="feature-text">
+          <h3>Adaptive Prosthetic Control</h3>
+          <p>
+            Machine learning algorithms evolve alongside the user—retuning joint feedback, resistance,
+            and movement dynamics in real time.
+          </p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+<section class="fade-in">
+  <h2>Our Vision</h2>
+  <p>We believe augmentation shouldn’t feel foreign—it should feel intuitive.
+Our goal is to build seamless extensions of the body that restore, enhance, and transform human capability, integrating AI, machine learning, and cutting-edge materials science.</p>
+</section>
+
+<section class="fade-in">
+  <p>We're seeking innovators in AI and machine learning to join our team. If you're passionate about pushing the boundaries of human-technology integration, explore our <a href="{{ url_for('careers') }}">careers page</a> for current openings.
+  We'd love to have some new team members to join us on this journey <br><br><br></p>
+</section>
+
+{% endblock %}
