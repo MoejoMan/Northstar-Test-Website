@@ -300,8 +300,8 @@ body.features-mode main {
 .showcase-card img {
   width: 100%;
   height: 100%;
-  object-fit: cover;     /* <- keeps it clean and contained */
-  object-position: center; /* <- centers the good stuff */
+  object-fit: cover;     
+  object-position: center; 
   border-radius: 12px;
 
   filter: grayscale(100%) brightness(0.9);
@@ -548,8 +548,7 @@ body.features-mode .ticker span {
   transform: scaleX(0);
   opacity: 0;
   transition:
-    transform 7s cubic-bezier(0.22, 1, 0.36, 1), /*/ adjust here for speed of underline*/
-    opacity 0.6s ease;
+    transform 7s cubic-bezier(0.22, 1, 0.36, 1), 
 }
 
 .scroll-banner.underline-active::after {
@@ -637,11 +636,10 @@ body.features-mode .ticker span {
   flex-direction: row-reverse;
 }
 
-/* Image + tech frame */
 .feature-image {
   position: relative;
   width: 440px;
-  height: 450px;  /* was 310px */
+  height: 450px;  
   overflow: hidden;
   border-radius: 14px;
 }
@@ -652,7 +650,7 @@ body.features-mode .ticker span {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: 50% 55%; /* adjust Y until perfect */
+  object-position: 50% 55%; 
   filter: grayscale(40%) brightness(1);
   transition: transform 1s ease, filter 1s ease;
 }
@@ -664,7 +662,6 @@ body.features-mode .ticker span {
   filter: grayscale(0%) brightness(1.05);
 }
 
-/* Tech frame overlay */
 .tech-frame {
   position: absolute;
   inset: 0;
@@ -682,7 +679,6 @@ body.features-mode .ticker span {
   );
 }
 
-/* Text */
 .feature-text {
   max-width: 460px;
 }
@@ -698,7 +694,6 @@ body.features-mode .ticker span {
   line-height: 1.7;
 }
 
-/* Parallax */
 .feature-image[data-parallax] img {
   transform: translateY(var(--pY, 0px));
   will-change: transform;
@@ -937,14 +932,13 @@ body.features-mode .ticker span {
 .feature-suite.is-active .feature-block:nth-child(3) { transition-delay: 0.4s; }
 
 
-/* Underline initially hidden */
 .feature-text::after {
   content: "";
   display: block;
   width: 100%;
   height: 2px;
   margin-top: 14px;
-  background: rgba(255, 255, 255, 0.35); /* a soft white line */
+  background: rgba(255, 255, 255, 0.35); 
   transform-origin: left;
   transform: scaleX(0);
   opacity: 0;
@@ -953,13 +947,10 @@ body.features-mode .ticker span {
     opacity 0.6s ease;
 }
 
-/* When the feature block is visible */
 .feature-block.visible .feature-text::after {
   transform: scaleX(1);
   opacity: 1;
 }
-
-
 
 
 @media (max-width: 960px) {
@@ -1087,7 +1078,6 @@ body.features-mode .careers-hero p {
   margin-top: 200px;
 }
 
-/* Mobile tweaks */
 @media (max-width: 768px) {
   .careers-hero {
     margin-top: 70px;
@@ -1113,14 +1103,12 @@ body.features-mode .page-contact .intro p {
   color: #111;
 }
 
-/* Contact feature-suite tweaks */
 .page-contact .contact-suite {
   max-width: 900px;
   margin: 80px auto 40px;
   padding: 80px 60px 50px;
 }
 
-/* Contact details layout */
 .contact-details {
   margin-top: 40px;
   display: grid;
@@ -1146,7 +1134,6 @@ body.features-mode .page-contact .intro p {
   position: relative;
 }
 
-/* Underline reveal (matches rest of site) */
 .contact-details a::after {
   content: "";
   position: absolute;
@@ -1165,7 +1152,10 @@ body.features-mode .page-contact .intro p {
   transform: scaleX(1);
 }
 
-/* Mobile */
+
+
+
+
 @media (max-width: 768px) {
   .page-contact .contact-suite {
     padding: 60px 30px 40px;
