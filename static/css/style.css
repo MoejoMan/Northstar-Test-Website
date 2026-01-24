@@ -1107,6 +1107,39 @@ body.features-mode .page-contact .intro p {
   max-width: 900px;
   margin: 80px auto 40px;
   padding: 80px 60px 50px;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  text-align: center;
+  opacity: 1;
+  transform: none;
+  transition: none;
+}
+
+.page-contact .contact-suite::before,
+.page-contact .contact-suite::after {
+  display: none !important;
+}
+
+.page-contact .contact-suite .eyebrow {
+  color: #666;
+}
+
+.page-contact .contact-suite h2 {
+  color: #111;
+}
+
+.page-contact .contact-suite .feature-lede {
+  color: #333;
+  max-width: 100%;
+}
+
+.page-contact .contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  margin-top: 2rem;
+  text-align: left;
 }
 
 .contact-details {

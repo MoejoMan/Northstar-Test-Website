@@ -28,24 +28,288 @@
 
 <hr class="divider">
 
+{% if get_flashed_messages() %}
+  <section class="flash-messages">
+    {% for category, message in get_flashed_messages(with_categories=true) %}
+      <div class="flash flash-{{ category }}">
+        {{ message }}
+        <button class="flash-close" onclick="this.parentElement.style.display='none';">×</button>
+      </div>
+    {% endfor %}
+  </section>
+{% endif %}
+
 <section class="feature-suite contact-suite">
   <span class="eyebrow">Contact</span>
   <h2>Get in Touch</h2>
-  <p class="feature-lede">
-    We aim to respond to all legitimate enquiries within one working day.
-  </p>
 
-  <div class="contact-details">
-    <div>
-      <span class="contact-label">Email</span>
-      <a href="mailto:contact@kencorp.com">contact@kencorp.com</a>
+  <div class="contact-grid">
+    <div class="contact-form-container">
+      <form method="POST" class="contact-form">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" required>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="6" required></textarea>
+        </div>
+
+        <button type="submit" class="submit-btn">Send Message</button>
+      </form>
     </div>
 
-    <div>
-      <span class="contact-label">Phone</span>
-      <a href="tel:+441234567890">+44 1234 567890</a>
+    <div class="contact-info">
+      <p class="feature-lede">
+        We aim to respond to all legitimate enquiries within one working day.
+      </p>
+
+      <div class="contact-details">
+        <div>
+          <span class="contact-label">Email</span>
+          <a href="mailto:joehayes006@gmail.com">joehayes006@gmail.com</a>
+        </div>
+
+        <div>
+          <span class="contact-label">Phone</span>
+          <a href="tel:+44 07877311102">+44 07877 311102</a>
+        </div>
+      </div>
     </div>
   </div>
 </section>
+
+<style>
+.flash-messages {
+  max-width: 1000px;
+  margin: 2rem auto;
+  padding: 0 2rem;
+}
+
+.flash {
+  padding: 1rem 1.5rem;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.flash-success {
+  background: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+.flash-error {
+  background: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+
+.flash-close {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: inherit;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+
+.flash-close:hover {
+  opacity: 1;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  margin-top: 2rem;
+}
+
+.contact-form-container {
+  grid-column: 1;
+}
+
+.contact-info {
+  grid-column: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #111;
+  font-size: 0.95rem;
+}
+
+body.features-mode .form-group label {
+  color: #f5f5f7;
+}
+
+.form-group input,
+.form-group textarea {
+  padding: 0.75rem 1rem;
+  border: 2px solid #e0e0e0;
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+  background: #fff;
+  color: #111;
+}
+
+body.features-mode .form-group input,
+body.features-mode .form-group textarea {
+  background: #1a1a1a;
+  color: #f5f5f7;
+  border-color: #333;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.submit-btn {
+  padding: 0.85rem 2rem;
+  background: #000;
+  color: #fff;
+  border: 2px solid #000;
+  border-radius: 4px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+  align-self: flex-start;
+}
+
+.submit-btn:hover {
+  background: #333;
+  border-color: #333;
+  transform: translateY(-2px);
+}
+
+body.features-mode .submit-btn {
+  background: #f5f5f7;
+  color: #000;
+  border-color: #f5f5f7;
+}
+
+body.features-mode .submit-btn:hover {
+  background: #e0e0e0;
+  border-color: #e0e0e0;
+}
+
+.contact-details {
+  margin-top: 2rem;
+}
+
+.contact-details > div {
+  margin-bottom: 2rem;
+}
+
+.contact-label {
+  display: block;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+body.features-mode .contact-label {
+  color: #999;
+}
+
+.contact-details a {
+  font-size: 1.2rem;
+  text-decoration: none;
+  color: #000;
+  font-weight: 600;
+  position: relative;
+  display: inline-block;
+}
+
+body.features-mode .contact-details a {
+  color: #f5f5f7;
+}
+
+.contact-details a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: currentColor;
+  transition: width 0.3s ease;
+}
+
+.contact-details a:hover::after {
+  width: 100%;
+}
+
+@media (max-width: 1024px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .contact-form-container {
+    grid-column: 1;
+  }
+
+  .contact-info {
+    grid-column: 1;
+  }
+}
+
+@media (max-width: 768px) {
+  .contact-grid {
+    gap: 1.5rem;
+  }
+
+  .form-group input,
+  .form-group textarea {
+    font-size: 16px;
+  }
+}
+</style>
 
 {% endblock %}
