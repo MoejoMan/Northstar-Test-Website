@@ -388,6 +388,7 @@ featureBlocks.forEach((block, index) => {
 
   // Set initial language
   langCurrent.textContent = currentLang.toUpperCase();
+  applyLanguage(currentLang);
 
   if (langToggle) {
     langToggle.addEventListener('click', () => {
@@ -395,11 +396,26 @@ featureBlocks.forEach((block, index) => {
       localStorage.setItem('lang', currentLang);
       langCurrent.textContent = currentLang.toUpperCase();
       
+      // Update all elements with translations
+      applyLanguage(currentLang);
+      
       // Trigger page content update (ready for translation)
       document.documentElement.lang = currentLang;
       
       // Add a toast notification
       showLangNotification(currentLang === 'en' ? 'Switched to English' : '日本語に切り替わりました');
+    });
+  }
+
+  // Apply language to all elements with data-en and data-jp attributes
+  function applyLanguage(lang) {
+    const elements = document.querySelectorAll('[data-en][data-jp]');
+    elements.forEach(el => {
+      if (lang === 'jp') {
+        el.textContent = el.getAttribute('data-jp');
+      } else {
+        el.textContent = el.getAttribute('data-en');
+      }
     });
   }
 

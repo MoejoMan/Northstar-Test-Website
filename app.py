@@ -6,28 +6,50 @@ app.secret_key = os.environ.get('SECRET_KEY', 'dev-key-change-in-production')
 
 @app.route('/')
 def home():
-    return render_template('home.html')
-
-@app.route('/careers')
-def careers():
-    return render_template('careers.html')
+    return render_template('portfolio.html')
 
 @app.route('/contact', methods=['GET', 'POST'])
 def contact():
+    if request.method == 'POST':
+        company = request.form.get('company')
+        contact_name = request.form.get('contact_name')
+        email = request.form.get('email')
+        message = request.form.get('message')
+        
+        if company and contact_name and email and message:
+            flash('Thank you! We received your inquiry. We\'ll respond within 24 hours.', 'success')
+            return redirect(url_for('contact'))
+        else:
+            flash('Please fill in all required fields.', 'error')
+    
+    return render_template('contact_business.html')
+
+@app.route('/demo')
+def demo():
+    return render_template('home.html')
+
+@app.route('/demo/careers')
+def demo_careers():
+    return render_template('careers.html')
+
+@app.route('/demo/contact', methods=['GET', 'POST'])
+def demo_contact():
     if request.method == 'POST':
         name = request.form.get('name')
         email = request.form.get('email')
         message = request.form.get('message')
         
         if name and email and message:
-            # In production, integrate with email service or database
-            # For now, we'll just acknowledge receipt
             flash('Thank you! We received your message. We\'ll get back to you soon.', 'success')
-            return redirect(url_for('contact'))
+            return redirect(url_for('demo_contact'))
         else:
             flash('Please fill in all fields.', 'error')
     
     return render_template('contact.html')
+
+@app.route('/careers')
+def careers():
+    return render_template('careers.html')
 
 @app.route('/apply', methods=['POST'])
 def apply_for_job():

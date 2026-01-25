@@ -1,0 +1,646 @@
+{% extends 'base.html' %}
+{% block title %}Portfolio | Web Design Services{% endblock %}
+{% block content %}
+
+<div id="splash">
+  <div class="splash-logo">
+    <span class="splash-star">✦</span>
+    <span class="splash-text">Portfolio</span>
+  </div>
+</div>
+
+<section class="hero-gradient">
+  <div class="typewriter-container">
+    <h1 class="typewriter typewriter-animation" data-en="Professional Websites for Japanese Businesses" data-jp="日本のビジネス向けプロフェッショナルウェブサイト">Professional Websites for Japanese Businesses</h1>
+  </div>
+
+  <section class="hero">
+    <p data-en="Fast, affordable, bilingual web design. Production-ready sites in 2-3 weeks." data-jp="迅速、手頃、バイリンガルなウェブデザイン。2-3週間で本番環境対応のサイトを制作。">Fast, affordable, bilingual web design. Production-ready sites in 2-3 weeks.</p>
+  </section>
+</section>
+
+<section class="intro fade-in">
+  <h2 data-en="Our Approach" data-jp="私たちのアプローチ">Our Approach</h2>
+  <p>
+    We build modern, mobile-optimized websites for small and medium businesses in Japan. 
+    Our sites are fast, secure, and designed to work seamlessly in both English and Japanese.
+  </p>
+  <p>
+    <strong>Typical agency:</strong> 2-3 months, ¥500,000+<br>
+    <strong>Our service:</strong> 2-3 weeks, ¥150,000-300,000
+  </p>
+</section>
+
+<hr class="divider">
+
+<section class="showcase fade-in">
+  <h2 data-en="Featured Work" data-jp="制作実績" style="padding: 0 2rem;">Featured Work</h2>
+  
+  <div class="portfolio-project">
+    <div class="project-preview">
+      <div class="browser-bar">
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="url">northstar-demo.com</span>
+      </div>
+      <a href="{{ url_for('demo') }}" class="project-link">
+        <img src="{{ url_for('static', filename='images/automation.jpg') }}" alt="Northstar Template Demo">
+        <div class="project-overlay">
+          <span class="view-demo">View Live Demo →</span>
+        </div>
+      </a>
+    </div>
+    
+    <div class="project-details">
+      <h3>Northstar Template</h3>
+      <p class="project-type">Tech Company Website</p>
+      
+      <div class="project-specs">
+        <div class="spec">
+          <span class="spec-label">Build Time</span>
+          <span class="spec-value">3 days</span>
+        </div>
+        <div class="spec">
+          <span class="spec-label">Pages</span>
+          <span class="spec-value">5 pages</span>
+        </div>
+        <div class="spec">
+          <span class="spec-label">Features</span>
+          <span class="spec-value">Bilingual, Dark Mode, Forms</span>
+        </div>
+      </div>
+      
+      <p class="project-description">
+        A modern, production-ready template showcasing advanced animations, 
+        responsive design, and bilingual support. Fully mobile-optimized with 
+        95+ accessibility score.
+      </p>
+      
+      <div class="tech-tags">
+        <span class="tag">Flask</span>
+        <span class="tag">Vanilla JS</span>
+        <span class="tag">CSS3</span>
+        <span class="tag">Mobile-First</span>
+        <span class="tag">SEO Optimized</span>
+      </div>
+      
+      <a href="{{ url_for('demo') }}" class="demo-button">
+        View Full Demo Site →
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="fade-in pricing-showcase">
+  <h2 data-en="Service Packages" data-jp="サービスパッケージ">Service Packages</h2>
+  
+  <div class="price-grid">
+    <div class="price-card">
+      <h3 data-en="Basic" data-jp="ベーシック">Basic</h3>
+      <p class="price">¥150,000 <span>~ ¥300,000</span></p>
+      <ul>
+        <li>5-page website / 5ページ構成</li>
+        <li>Mobile responsive / スマホ対応</li>
+        <li>Contact form / お問い合わせフォーム</li>
+        <li>Basic SEO / 基本的なSEO</li>
+        <li>2 weeks delivery / 2週間納品</li>
+      </ul>
+      <a href="{{ url_for('contact') }}" class="cta-button">Get Started</a>
+    </div>
+    
+    <div class="price-card featured">
+      <span class="popular-badge">Most Popular</span>
+      <h3 data-en="Professional" data-jp="プロフェッショナル">Professional</h3>
+      <p class="price">¥300,000 <span>~ ¥600,000</span></p>
+      <ul>
+        <li>10-page website / 10ページ構成</li>
+        <li>Custom design / カスタムデザイン</li>
+        <li>Bilingual support / 日英対応</li>
+        <li>Advanced SEO / 高度なSEO</li>
+        <li>CMS integration / CMS導入</li>
+        <li>3-4 weeks delivery / 3-4週間納品</li>
+      </ul>
+      <a href="{{ url_for('contact') }}" class="cta-button primary">Get Started</a>
+    </div>
+    
+    <div class="price-card">
+      <h3 data-en="Enterprise" data-jp="エンタープライズ">Enterprise</h3>
+      <p class="price">¥600,000+</p>
+      <ul>
+        <li>Unlimited pages / ページ数無制限</li>
+        <li>E-commerce / ECサイト</li>
+        <li>Multi-language / 多言語対応</li>
+        <li>Advanced features / 高度な機能</li>
+        <li>Ongoing support / 継続サポート</li>
+        <li>Custom timeline / カスタム納期</li>
+      </ul>
+      <a href="{{ url_for('contact') }}" class="cta-button">Contact Us</a>
+    </div>
+  </div>
+</section>
+
+<section class="fade-in why-choose">
+  <h2 data-en="Why Choose Us" data-jp="選ばれる理由">Why Choose Us</h2>
+  
+  <div class="benefits-grid">
+    <div class="benefit">
+      <span class="benefit-icon">⚡</span>
+      <h3 data-en="Fast Delivery" data-jp="迅速な納品">Fast Delivery</h3>
+      <p>2-3 weeks vs traditional 2-3 months. We work efficiently without compromising quality.</p>
+    </div>
+    
+    <div class="benefit">
+      <span class="benefit-icon">💰</span>
+      <h3 data-en="Transparent Pricing" data-jp="明確な価格">Transparent Pricing</h3>
+      <p>No hidden fees. 50-70% less than typical agencies with the same quality.</p>
+    </div>
+    
+    <div class="benefit">
+      <span class="benefit-icon">🇯🇵</span>
+      <h3 data-en="Bilingual Support" data-jp="バイリンガル対応">Bilingual Support</h3>
+      <p>Japanese-speaking developers. We understand both markets and cultures.</p>
+    </div>
+    
+    <div class="benefit">
+      <span class="benefit-icon">📱</span>
+      <h3 data-en="Mobile-First" data-jp="モバイルファースト">Mobile-First</h3>
+      <p>Optimized for smartphones. 90% of Japanese users browse on mobile.</p>
+    </div>
+  </div>
+</section>
+
+<section class="fade-in cta-section">
+  <h2 data-en="Ready to Get Started?" data-jp="始める準備はできましたか？">Ready to Get Started?</h2>
+  <p>Let's discuss your project and how we can help your business grow online.</p>
+  <div class="cta-buttons">
+    <a href="{{ url_for('contact') }}" class="btn btn-primary">Contact Us / お問い合わせ</a>
+    <a href="{{ url_for('demo') }}" class="btn btn-secondary">View Demo Site</a>
+  </div>
+</section>
+
+<style>
+.portfolio-project {
+  max-width: 1200px;
+  margin: 60px auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+.project-preview {
+  position: relative;
+}
+
+.browser-bar {
+  background: #e5e5e5;
+  padding: 10px 15px;
+  border-radius: 8px 8px 0 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #ff5f56;
+}
+
+.dot:nth-child(2) {
+  background: #ffbd2e;
+}
+
+.dot:nth-child(3) {
+  background: #27c93f;
+}
+
+.url {
+  margin-left: auto;
+  font-size: 0.85rem;
+  color: #666;
+}
+
+.project-link {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  border-radius: 0 0 8px 8px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+.project-link img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.project-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(102, 126, 234, 0.95);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.project-link:hover .project-overlay {
+  opacity: 1;
+}
+
+.project-link:hover img {
+  transform: scale(1.05);
+}
+
+.view-demo {
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.project-details h3 {
+  font-size: 2rem;
+  margin: 0 0 0.5rem 0;
+}
+
+.project-type {
+  color: #667eea;
+  font-weight: 600;
+  margin: 0 0 2rem 0;
+}
+
+.project-specs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin: 2rem 0;
+  padding: 1.5rem;
+  background: #f5f5f5;
+  border-radius: 8px;
+}
+
+body.features-mode .project-specs {
+  background: #1a1a1a;
+}
+
+.spec {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.spec-label {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #666;
+  font-weight: 600;
+}
+
+body.features-mode .spec-label {
+  color: #999;
+}
+
+.spec-value {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #111;
+}
+
+body.features-mode .spec-value {
+  color: #f5f5f7;
+}
+
+.project-description {
+  line-height: 1.8;
+  margin: 2rem 0;
+}
+
+.tech-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin: 2rem 0;
+}
+
+.tag {
+  padding: 6px 14px;
+  background: #667eea;
+  color: #fff;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.demo-button {
+  display: inline-block;
+  padding: 14px 28px;
+  background: #000;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  margin-top: 1rem;
+}
+
+.demo-button:hover {
+  background: #667eea;
+  transform: translateY(-2px);
+}
+
+body.features-mode .demo-button {
+  background: #f5f5f7;
+  color: #000;
+}
+
+body.features-mode .demo-button:hover {
+  background: #667eea;
+  color: #fff;
+}
+
+.pricing-showcase {
+  max-width: 1200px;
+  margin: 80px auto;
+  padding: 0 2rem;
+}
+
+.price-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.price-card {
+  background: #fff;
+  border: 2px solid #e0e0e0;
+  border-radius: 12px;
+  padding: 2.5rem 2rem;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+body.features-mode .price-card {
+  background: #1a1a1a;
+  border-color: #333;
+}
+
+.price-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.price-card.featured {
+  border-color: #667eea;
+  border-width: 3px;
+}
+
+.popular-badge {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #667eea;
+  color: #fff;
+  padding: 4px 16px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.price-card h3 {
+  font-size: 1.5rem;
+  margin: 0 0 1rem 0;
+}
+
+.price {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #111;
+  margin: 1rem 0 2rem 0;
+}
+
+body.features-mode .price {
+  color: #f5f5f7;
+}
+
+.price span {
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: #666;
+}
+
+.price-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 2rem 0;
+}
+
+.price-card li {
+  padding: 0.75rem 0;
+  border-bottom: 1px solid #f0f0f0;
+  font-size: 0.95rem;
+}
+
+body.features-mode .price-card li {
+  border-bottom-color: #2a2a2a;
+}
+
+.price-card li:last-child {
+  border-bottom: none;
+}
+
+.cta-button {
+  display: block;
+  text-align: center;
+  padding: 14px 0;
+  background: #111;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  margin-top: 2rem;
+}
+
+.cta-button:hover {
+  background: #667eea;
+}
+
+.cta-button.primary {
+  background: #667eea;
+}
+
+.cta-button.primary:hover {
+  background: #5568d3;
+}
+
+body.features-mode .cta-button {
+  background: #f5f5f7;
+  color: #000;
+}
+
+body.features-mode .cta-button:hover {
+  background: #667eea;
+  color: #fff;
+}
+
+.why-choose {
+  max-width: 1200px;
+  margin: 80px auto;
+  padding: 0 2rem;
+}
+
+.benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 3rem;
+  margin-top: 3rem;
+}
+
+.benefit {
+  text-align: center;
+}
+
+.benefit-icon {
+  font-size: 3rem;
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.benefit h3 {
+  font-size: 1.3rem;
+  margin: 1rem 0;
+}
+
+.benefit p {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: #666;
+}
+
+body.features-mode .benefit p {
+  color: #999;
+}
+
+.cta-section {
+  max-width: 800px;
+  margin: 100px auto;
+  text-align: center;
+  padding: 4rem 2rem;
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(102, 126, 234, 0.05) 100%);
+  border-radius: 16px;
+}
+
+body.features-mode .cta-section {
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.15) 0%, rgba(102, 126, 234, 0.08) 100%);
+}
+
+.cta-section h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.cta-section p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  color: #666;
+}
+
+body.features-mode .cta-section p {
+  color: #999;
+}
+
+.cta-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.btn {
+  padding: 16px 32px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+.btn-primary {
+  background: #667eea;
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background: #5568d3;
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  background: #fff;
+  color: #111;
+  border: 2px solid #111;
+}
+
+.btn-secondary:hover {
+  background: #111;
+  color: #fff;
+}
+
+body.features-mode .btn-secondary {
+  background: #1a1a1a;
+  color: #f5f5f7;
+  border-color: #f5f5f7;
+}
+
+body.features-mode .btn-secondary:hover {
+  background: #f5f5f7;
+  color: #000;
+}
+
+@media (max-width: 1024px) {
+  .portfolio-project {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .price-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .benefits-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .project-specs {
+    grid-template-columns: 1fr;
+  }
+  
+  .cta-section h2 {
+    font-size: 1.8rem;
+  }
+  
+  .cta-buttons {
+    flex-direction: column;
+  }
+  
+  .btn {
+    width: 100%;
+  }
+}
+</style>
+
+{% endblock %}

@@ -2,6 +2,10 @@
 {% block title %}Home | Northstar{% endblock %}
 {% block content %}
 
+<div style="background: rgba(102, 126, 234, 0.1); border: 2px solid #667eea; border-radius: 8px; padding: 1.5rem; margin: 2rem auto; max-width: 1200px; text-align: center;">
+  <p style="margin: 0; color: #667eea; font-weight: 600;">📱 This is a demo site showcasing web design capabilities. <a href="{{ url_for('home') }}" style="color: #667eea; text-decoration: underline;">Back to our services →</a></p>
+</div>
+
 <div id="splash">
   <div class="splash-logo">
     <span class="splash-star">✦</span>
@@ -24,7 +28,7 @@
 
 
   <section class="intro fade-in">
-    <h2>Who We Are</h2>
+    <h2 data-en="Who We Are" data-jp="私たちについて">Who We Are</h2>
     <p>
       Northstar is a human-augmentation research studio focused on advanced prosthetics, neural interfaces, and sensory enhancement technologies.
 We create systems that don’t replace human ability—
@@ -94,8 +98,8 @@ they extend it.
 
   <section class="feature-suite fade-in" id="feature-suite">
     <div class="feature-heading">
-      <p class="eyebrow">Neuro-mechanical systems</p>
-      <h2>Interfaces that respond like instinct</h2>
+      <p class="eyebrow" data-en="Neuro-mechanical systems" data-jp="神経機械システム">Neuro-mechanical systems</p>
+      <h2 data-en="Interfaces that respond like instinct" data-jp="本能のように反応するインターフェース">Interfaces that respond like instinct</h2>
       <p class="feature-lede">
         Each module is tuned for real-time responsiveness, protective stability, and
         a sense of ceremony—so every interaction feels intentional and alive.
@@ -106,7 +110,7 @@ they extend it.
       <article class="feature-block left">
         <div class="feature-meta">
           <span class="feature-index">001</span>
-          <span class="feature-tag">Neural Mapping</span>
+          <span class="feature-tag" data-en="Neural Mapping" data-jp="神経マッピング">Neural Mapping</span>
         </div>
 
         <div class="feature-image" data-parallax>
@@ -131,7 +135,7 @@ they extend it.
       <article class="feature-block right">
         <div class="feature-meta">
           <span class="feature-index">002</span>
-          <span class="feature-tag">Cybernetics</span>
+          <span class="feature-tag" data-en="Cybernetics" data-jp="サイバネティクス">Cybernetics</span>
         </div>
 
         <div class="feature-image" data-parallax>
@@ -156,7 +160,7 @@ they extend it.
       <article class="feature-block left">
         <div class="feature-meta">
           <span class="feature-index">003</span>
-          <span class="feature-tag">Adaptive Control</span>
+          <span class="feature-tag" data-en="Adaptive Control" data-jp="適応制御">Adaptive Control</span>
         </div>
 
         <div class="feature-image" data-parallax>
@@ -182,7 +186,7 @@ they extend it.
 
 <section class="fade-in">
 
-  <h2><br><br><br>Our Vision</h2>
+  <h2 data-en="Our Vision" data-jp="私たちのビジョン"><br><br><br>Our Vision</h2>
   <p class="left-aligned-text">We believe augmentation shouldn't feel foreign—it should feel intuitive.
 Our goal is to build seamless extensions of the body that restore, enhance, and transform human capability, integrating AI, machine learning, and cutting-edge materials science.</p>
 </section>
@@ -197,7 +201,7 @@ Our goal is to build seamless extensions of the body that restore, enhance, and 
 
 <section class="fade-in roadmap-section">
   <div class="roadmap-header">
-    <h2>The Road Ahead</h2>
+    <h2 data-en="The Road Ahead" data-jp="今後のロードマップ">The Road Ahead</h2>
     <div class="roadmap-divider"></div>
   </div>
   

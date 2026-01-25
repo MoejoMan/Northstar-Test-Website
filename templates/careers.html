@@ -2,6 +2,10 @@
 {% block title %}Careers | Northstar{% endblock %}
 {% block content %}
 
+<div style="background: rgba(102, 126, 234, 0.1); border: 2px solid #667eea; border-radius: 8px; padding: 1.5rem; margin: 2rem auto; max-width: 1200px; text-align: center;">
+  <p style="margin: 0; color: #667eea; font-weight: 600;">📱 This is a demo site showcasing web design capabilities. <a href="{{ url_for('home') }}" style="color: #667eea; text-decoration: underline;">Back to our services →</a></p>
+</div>
+
 <div id="splash">
   <div class="splash-logo">
     <span class="splash-star">✦</span>
@@ -16,7 +20,7 @@
 </section>
 
 <section class="intro">
-  <h2>Careers</h2>
+  <h2 data-en="Careers" data-jp="キャリア">Careers</h2>
   <p>
     We’re building secure, intelligent systems — and we’re looking for people
     who care about how things work under the hood.
@@ -37,7 +41,7 @@
 {% endif %}
 
 <section class="features-section">
-  <h2 class="features-title">
+  <h2 class="features-title" data-en="Open Roles" data-jp="止まらにない履歴">
     Open Roles
     <span class="features-underline"></span>
   </h2>

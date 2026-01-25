@@ -33,9 +33,43 @@ body {
   width: 100%;
 }
 
+/* Japanese font support */
+html[lang="jp"] {
+  font-family: 'Noto Sans JP', 'Hiragino Sans', 'Yu Gothic', sans-serif;
+  line-height: 2;
+}
+
+html[lang="jp"] .typewriter,
+html[lang="jp"] h1,
+html[lang="jp"] h2,
+html[lang="jp"] h3 {
+  font-family: 'Noto Sans JP', 'Hiragino Sans', 'Yu Gothic', sans-serif;
+}
+
 body.features-mode {
   background-color: #05070b;
   color: #e7edf9;
+}
+
+/* Skip to main content link for accessibility */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: #667eea;
+  color: #fff;
+  padding: 8px 16px;
+  text-decoration: none;
+  font-weight: 600;
+  border-radius: 0 0 4px 0;
+  z-index: 1000;
+  transition: top 0.3s;
+}
+
+.skip-link:focus {
+  top: 0;
+  outline: 3px solid #fff;
+  outline-offset: 2px;
 }
 
 /* ========================================================================
@@ -272,17 +306,6 @@ body.features-mode main {
   border-color: #111;
 }
 
-body.features-mode .lang-toggle {
-  border-color: #888;
-  color: #f5f5f7;
-}
-
-body.features-mode .lang-toggle:hover {
-  background: #f5f5f7;
-  color: #05070b;
-  border-color: #f5f5f7;
-}
-
 /* ===================== */
 /* Language Toast Notification */
 /* ===================== */
@@ -319,26 +342,21 @@ body.features-mode .lang-toast {
    ======================================================================== */
 
 .typewriter-container {
-  display: block;
-  overflow: visible;
-  white-space: normal;
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
   border-right: none;
   padding-bottom: 10px;
-  max-width: 100%;
-  word-wrap: break-word;
-  overflow-wrap: break-word;
 }
 
 .typewriter {
-  display: block;
-  overflow: visible;
-  white-space: normal;
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
   border-right: 2px solid #000;
   font-weight: 600;
   font-size: 2rem;
   letter-spacing: 0.05em;
-  word-wrap: break-word;
-  overflow-wrap: break-word;
 }
 
 .typewriter-animation {
@@ -524,7 +542,6 @@ body.features-mode .lang-toast {
 }
 
 #main-header.shrink {
-  padding: 10px 0;
   background: rgba(255, 255, 255, 0.8);
   border-bottom-color: rgba(200, 200, 200, 0.5);
 }
@@ -637,7 +654,6 @@ body.features-mode .lang-toast {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  overflow-x: hidden;
   box-sizing: border-box;
 }
 
@@ -1397,6 +1413,122 @@ footer {
   padding: 24px 0px;
   box-sizing: border-box;
   overflow-x: hidden;
+}
+
+.tech-badge {
+  margin-top: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.badge-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #666;
+  font-weight: 600;
+}
+
+body.features-mode .badge-label {
+  color: #999;
+}
+
+.tech-stack {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.tech-item {
+  color: #111;
+}
+
+body.features-mode .tech-item {
+  color: #f5f5f7;
+}
+
+.tech-separator {
+  color: #667eea;
+  font-weight: bold;
+}
+
+.build-time {
+  font-size: 0.8rem;
+  color: #667eea;
+  font-weight: 500;
+  margin-top: 4px;
+}
+
+.trust-badges {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin: 20px 0;
+  flex-wrap: wrap;
+}
+
+.trust-badges .badge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.trust-badges .icon {
+  font-size: 2rem;
+}
+
+.trust-badges .text {
+  font-size: 0.75rem;
+  text-align: center;
+  line-height: 1.4;
+  color: #666;
+  font-weight: 500;
+}
+
+body.features-mode .trust-badges .text {
+  color: #999;
+}
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin: 20px 0;
+}
+
+.social-links a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #f0f0f0;
+  color: #111;
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.social-links a:hover {
+  background: #667eea;
+  color: #fff;
+  transform: translateY(-3px);
+}
+
+body.features-mode .social-links a {
+  background: #1a1a1a;
+  color: #f5f5f7;
+}
+
+body.features-mode .social-links a:hover {
+  background: #667eea;
+  color: #fff;
 }
 
 /* ========================================================================

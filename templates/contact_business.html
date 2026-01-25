@@ -1,0 +1,455 @@
+{% extends 'base.html' %}
+{% block title %}Contact Us | Web Design Services{% endblock %}
+{% block body_class %}page-contact{% endblock %}
+{% block content %}
+
+<div id="splash">
+  <div class="splash-logo">
+    <span class="splash-star">✦</span>
+    <span class="splash-text">Let's Talk</span>
+  </div>
+</div>
+
+<section class="hero-gradient">
+  <div class="typewriter-container">
+    <h1 class="typewriter typewriter-animation" data-en="Get Your Project Started" data-jp="プロジェクトを始めましょう">Get Your Project Started</h1>
+  </div>
+
+  <section class="hero">
+    <p data-en="Tell us about your business and we'll provide a custom quote and timeline." data-jp="ビジネスについてお聞かせください。カスタム見積もりとタイムラインを提供します。">Tell us about your business and we'll provide a custom quote and timeline.</p>
+  </section>
+</section>
+
+<section class="intro">
+  <h2 data-en="Inquiry Form" data-jp="お問い合わせフォーム">Inquiry Form</h2>
+  <p>
+    We respond to all inquiries within 24 hours. Share details about your project, 
+    and we'll get back to you with a proposal and timeline.
+  </p>
+</section>
+
+<hr class="divider">
+
+{% if get_flashed_messages() %}
+  <section class="flash-messages">
+    {% for category, message in get_flashed_messages(with_categories=true) %}
+      <div class="flash flash-{{ category }}">
+        {{ message }}
+        <button class="flash-close" onclick="this.parentElement.style.display='none';">×</button>
+      </div>
+    {% endfor %}
+  </section>
+{% endif %}
+
+<section class="feature-suite contact-suite">
+  <span class="eyebrow" data-en="Contact" data-jp="お問い合わせ">Contact</span>
+  <h2 data-en="Start Your Project" data-jp="プロジェクトを開始">Start Your Project</h2>
+
+  <div class="contact-grid">
+    <div class="contact-form-container">
+      <form method="POST" class="contact-form">
+        <div class="form-group">
+          <label for="company">Company Name / 企業名</label>
+          <input type="text" id="company" name="company" required>
+        </div>
+
+        <div class="form-group">
+          <label for="contact-name">Your Name / お名前</label>
+          <input type="text" id="contact-name" name="contact_name" required>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email / メールアドレス</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+
+        <div class="form-group">
+          <label for="phone">Phone / 電話番号</label>
+          <input type="tel" id="phone" name="phone">
+        </div>
+
+        <div class="form-group">
+          <label for="service">What service are you interested in? / ご希望のサービス</label>
+          <select id="service" name="service" required>
+            <option value="">Select an option...</option>
+            <option value="basic">Basic Website (¥150k-300k)</option>
+            <option value="professional">Professional Website (¥300k-600k)</option>
+            <option value="enterprise">Enterprise Solution (¥600k+)</option>
+            <option value="custom">Custom / Other</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="message">Project Details / プロジェクトの詳細</label>
+          <textarea id="message" name="message" rows="6" placeholder="Tell us about your business, goals, and timeline..." required></textarea>
+        </div>
+
+        <button type="submit" class="submit-btn">Send Inquiry / 送信</button>
+      </form>
+    </div>
+
+    <div class="contact-info">
+      <p class="feature-lede">
+        We'll review your inquiry and respond within 24 hours with a custom proposal.
+      </p>
+
+      <div class="contact-details">
+        <div>
+          <span class="contact-label">Email / メール</span>
+          <a href="mailto:joehayes006@gmail.com">joehayes006@gmail.com</a>
+        </div>
+
+        <div>
+          <span class="contact-label">Phone / 電話</span>
+          <a href="tel:+4407877311102">+44 07877 311102</a>
+        </div>
+
+        <div>
+          <span class="contact-label">Response Time / 返信時間</span>
+          <p>Within 24 hours / 24時間以内</p>
+        </div>
+
+        <div>
+          <span class="contact-label">Typical Timeline / 一般的な納期</span>
+          <p>2-3 weeks / 2-3週間</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="fade-in next-steps">
+  <h2 data-en="What Happens Next" data-jp="次のステップ">What Happens Next</h2>
+  
+  <div class="steps-grid">
+    <div class="step">
+      <span class="step-number">1</span>
+      <h3 data-en="Submit Inquiry" data-jp="お問い合わせ送信">Submit Inquiry</h3>
+      <p>Fill out the form with your project details and requirements.</p>
+    </div>
+    
+    <div class="step">
+      <span class="step-number">2</span>
+      <h3 data-en="Review & Proposal" data-jp="レビューと提案">Review & Proposal</h3>
+      <p>We'll review your requirements and send a custom proposal with pricing and timeline.</p>
+    </div>
+    
+    <div class="step">
+      <span class="step-number">3</span>
+      <h3 data-en="Kick Off" data-jp="開始">Kick Off</h3>
+      <p>Once approved, we begin development and keep you updated throughout the process.</p>
+    </div>
+    
+    <div class="step">
+      <span class="step-number">4</span>
+      <h3 data-en="Launch" data-jp="公開">Launch</h3>
+      <p>Your site goes live. We provide support and handle any post-launch adjustments.</p>
+    </div>
+  </div>
+</section>
+
+<style>
+.flash-messages {
+  max-width: 1000px;
+  margin: 2rem auto;
+  padding: 0 2rem;
+}
+
+.flash {
+  padding: 1rem 1.5rem;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.flash-success {
+  background: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+.flash-error {
+  background: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+
+.flash-close {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: inherit;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+
+.flash-close:hover {
+  opacity: 1;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  margin-top: 2rem;
+}
+
+.contact-form-container {
+  grid-column: 1;
+  display: block;
+  visibility: visible;
+  opacity: 1;
+}
+
+.contact-info {
+  grid-column: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #111;
+  font-size: 0.95rem;
+}
+
+body.features-mode .form-group label {
+  color: #f5f5f7;
+}
+
+.form-group {
+  display: flex !important;
+  flex-direction: column !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  padding: 0.75rem 1rem;
+  border: 2px solid #e0e0e0;
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+  background: #fff;
+  color: #111;
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+body.features-mode .form-group input,
+body.features-mode .form-group textarea,
+body.features-mode .form-group select {
+  background: #1a1a1a;
+  color: #f5f5f7;
+  border-color: #333;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.submit-btn {
+  padding: 0.85rem 2rem;
+  background: #000;
+  color: #fff;
+  border: 2px solid #000;
+  border-radius: 4px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+  align-self: flex-start;
+}
+
+.submit-btn:hover {
+  background: #667eea;
+  border-color: #667eea;
+  transform: translateY(-2px);
+}
+
+body.features-mode .submit-btn {
+  background: #f5f5f7;
+  color: #000;
+  border-color: #f5f5f7;
+}
+
+body.features-mode .submit-btn:hover {
+  background: #667eea;
+  color: #fff;
+  border-color: #667eea;
+}
+
+.contact-details {
+  margin-top: 2rem;
+}
+
+.contact-details > div {
+  margin-bottom: 2rem;
+}
+
+.contact-label {
+  display: block;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+body.features-mode .contact-label {
+  color: #999;
+}
+
+.contact-details a,
+.contact-details p {
+  font-size: 1.1rem;
+  text-decoration: none;
+  color: #000;
+  font-weight: 600;
+  position: relative;
+  display: inline-block;
+}
+
+body.features-mode .contact-details a,
+body.features-mode .contact-details p {
+  color: #f5f5f7;
+}
+
+.contact-details a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: currentColor;
+  transition: width 0.3s ease;
+}
+
+.contact-details a:hover::after {
+  width: 100%;
+}
+
+.next-steps {
+  max-width: 1200px;
+  margin: 80px auto;
+  padding: 0 2rem;
+}
+
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.step {
+  text-align: center;
+  position: relative;
+}
+
+.step-number {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  background: #667eea;
+  color: #fff;
+  border-radius: 50%;
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin: 0 auto 1.5rem;
+}
+
+.step h3 {
+  font-size: 1.2rem;
+  margin: 0 0 0.75rem 0;
+}
+
+.step p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #666;
+}
+
+body.features-mode .step p {
+  color: #999;
+}
+
+@media (max-width: 1024px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .contact-form-container {
+    grid-column: 1;
+  }
+
+  .contact-info {
+    grid-column: 1;
+  }
+  
+  .steps-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .contact-grid {
+    gap: 1.5rem;
+  }
+
+  .form-group input,
+  .form-group textarea,
+  .form-group select {
+    font-size: 16px;
+  }
+  
+  .steps-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+</style>
+
+{% endblock %}
