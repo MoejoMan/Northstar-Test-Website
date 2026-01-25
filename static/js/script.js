@@ -220,7 +220,9 @@ featureBlocks.forEach((block, index) => {
   // Showcase carousel (active / prev / next auto-rotate)
   // -----------------------
   const cards = document.querySelectorAll('.showcase-card');
+  const showcase = document.querySelector('.showcase');
   let current = 0;
+  let rotateTimer;
 
   function updateCards() {
     cards.forEach(card =>
@@ -235,15 +237,56 @@ featureBlocks.forEach((block, index) => {
     cards[current].classList.add('active');
     cards[prev].classList.add('prev');
     cards[next].classList.add('next');
+
+    console.log(`Current: ${current}, Prev: ${prev}, Next: ${next}`);
+    console.log('Card classes:', Array.from(cards).map((c, i) => ({ index: i, classes: c.className })));
   }
+
+  function goNext() {
+    console.log('goNext called');
+    current = (current + 1) % cards.length;
+    updateCards();
+  }
+
+  function goPrev() {
+    console.log('goPrev called');
+    current = (current - 1 + cards.length) % cards.length;
+    updateCards();
+  }
+
+  function startRotation() {
+    if (rotateTimer) clearInterval(rotateTimer);
+    rotateTimer = setInterval(goNext, 10000);
+  }
+
+  console.log('Showcase:', showcase, 'Cards:', cards.length);
 
   if (cards.length > 0) {
     updateCards();
+    startRotation();
 
-    setInterval(() => {
-      current = (current + 1) % cards.length;
-      updateCards();
-    }, 10000);
+    // Single delegated click handler on showcase section
+    if (showcase) {
+      showcase.addEventListener('click', (e) => {
+        console.log('Click event fired, target:', e.target);
+        const img = e.target.closest('.showcase-card img');
+        console.log('Found img?', img);
+        if (!img) return;
+
+        const card = img.closest('.showcase-card');
+        console.log('Card classes:', card.className);
+        if (card.classList.contains('prev')) {
+          console.log('Clicking prev');
+          goPrev();
+          startRotation();
+        } else if (card.classList.contains('next')) {
+          console.log('Clicking next');
+          goNext();
+          startRotation();
+        }
+        // 'active' card has no action
+      });
+    }
   }
 
 
@@ -336,4 +379,40 @@ featureBlocks.forEach((block, index) => {
     window.addEventListener('scroll', manualCheck, { passive: true });
   }
 
+  // -----------------------
+  // Language Toggle
+  // -----------------------
+  const langToggle = document.getElementById('lang-toggle');
+  const langCurrent = document.querySelector('.lang-current');
+  let currentLang = localStorage.getItem('lang') || 'en';
+
+  // Set initial language
+  langCurrent.textContent = currentLang.toUpperCase();
+
+  if (langToggle) {
+    langToggle.addEventListener('click', () => {
+      currentLang = currentLang === 'en' ? 'jp' : 'en';
+      localStorage.setItem('lang', currentLang);
+      langCurrent.textContent = currentLang.toUpperCase();
+      
+      // Trigger page content update (ready for translation)
+      document.documentElement.lang = currentLang;
+      
+      // Add a toast notification
+      showLangNotification(currentLang === 'en' ? 'Switched to English' : '日本語に切り替わりました');
+    });
+  }
+
+  function showLangNotification(message) {
+    const toast = document.createElement('div');
+    toast.className = 'lang-toast';
+    toast.textContent = message;
+    document.body.appendChild(toast);
+    
+    setTimeout(() => toast.classList.add('visible'), 10);
+    setTimeout(() => {
+      toast.classList.remove('visible');
+      setTimeout(() => toast.remove(), 300);
+    }, 2000);
+  }
 });
