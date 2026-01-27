@@ -624,21 +624,253 @@ body.features-mode .btn-secondary:hover {
   }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 768px) {
+  .portfolio-project {
+    max-width: 100%;
+    width: calc(100% - 32px);
+    margin: 40px 16px;
+    padding: 0;
+    gap: 1.5rem;
+    box-sizing: border-box;
+    overflow-x: hidden;
+  }
+  
+  .project-preview {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow-x: hidden;
+  }
+  
+  .project-details {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow-x: hidden;
+  }
+  
   .project-specs {
     grid-template-columns: 1fr;
+    padding: 1rem;
+    gap: 1rem;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .pricing-showcase {
+    max-width: 100%;
+    width: calc(100% - 32px);
+    margin: 60px 16px;
+    padding: 0;
+    box-sizing: border-box;
+    overflow-x: hidden;
+  }
+  
+  .price-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding: 0;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .price-card {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .why-choose {
+    max-width: 100%;
+    width: calc(100% - 32px);
+    margin: 60px 16px;
+    padding: 0;
+    box-sizing: border-box;
+    overflow-x: hidden;
+  }
+  
+  .benefits-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .cta-section {
+    max-width: 100%;
+    width: calc(100% - 32px);
+    margin: 60px 16px;
+    padding: 2rem 16px;
+    box-sizing: border-box;
+    overflow-x: hidden;
+  }
+}
+
+@media (max-width: 640px) {
+  .portfolio-project {
+    margin: 30px 12px;
+    gap: 1rem;
+    width: calc(100% - 24px);
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .project-details h3 {
+    font-size: 1.5rem;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+  
+  .project-specs {
+    grid-template-columns: 1fr;
+    padding: 0.75rem;
+    gap: 0.75rem;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .spec-label {
+    font-size: 0.75rem;
+  }
+  
+  .spec-value {
+    font-size: 1rem;
+  }
+  
+  .project-description {
+    font-size: 0.95rem;
+    margin: 1rem 0;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+  
+  .tech-tags {
+    gap: 0.5rem;
+    margin: 1rem 0;
+    flex-wrap: wrap;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .tag {
+    padding: 4px 10px;
+    font-size: 0.75rem;
+  }
+  
+  .demo-button {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+    margin-top: 0.75rem;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .pricing-showcase {
+    margin: 40px 12px;
+    width: calc(100% - 24px);
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .price-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .price-card {
+    padding: 1.5rem 1rem;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .price-card h3 {
+    font-size: 1.3rem;
+  }
+  
+  .price {
+    font-size: 2rem;
+  }
+  
+  .price-card li {
+    font-size: 0.9rem;
+    padding: 0.5rem 0;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+  
+  .cta-button {
+    padding: 12px 0;
+    font-size: 0.95rem;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .why-choose {
+    margin: 40px 12px;
+    width: calc(100% - 24px);
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .benefits-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .benefit h3 {
+    font-size: 1.2rem;
+  }
+  
+  .benefit p {
+    font-size: 0.9rem;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+  
+  .cta-section {
+    margin: 40px 12px;
+    padding: 1.5rem 12px;
+    width: calc(100% - 24px);
+    max-width: 100%;
+    box-sizing: border-box;
   }
   
   .cta-section h2 {
-    font-size: 1.8rem;
+    font-size: 1.5rem;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+  
+  .cta-section p {
+    font-size: 1rem;
   }
   
   .cta-buttons {
     flex-direction: column;
+    gap: 0.75rem;
+    width: 100%;
+    box-sizing: border-box;
   }
   
   .btn {
     width: 100%;
+    max-width: 100%;
+    padding: 12px 16px;
+    font-size: 0.95rem;
+    box-sizing: border-box;
   }
 }
 </style>

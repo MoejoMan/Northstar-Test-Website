@@ -27,10 +27,12 @@ body {
   font-size: 1.05rem;
   line-height: 1.75;
   transition:
-    background-color 0.7s ease,
-    color 0.7s ease;
+    background-color 0.35s ease,
+    color 0.35s ease;
   overflow-x: hidden;
   width: 100%;
+  will-change: color;
+  transform: translateZ(0);
 }
 
 /* Japanese font support */
@@ -49,6 +51,25 @@ html[lang="jp"] h3 {
 body.features-mode {
   background-color: #05070b;
   color: #e7edf9;
+}
+
+/* Dark mode overlay for better compositing performance */
+body.features-mode::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at 20% 20%, rgba(36, 90, 255, 0.08), transparent 32%),
+              radial-gradient(circle at 80% 40%, rgba(36, 255, 209, 0.05), transparent 35%),
+              #05070b;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  will-change: opacity;
+}
+
+body.features-mode::before {
+  opacity: 1;
 }
 
 /* Skip to main content link for accessibility */
@@ -164,6 +185,25 @@ body.splash-done .site-title {
   font-size: 1.9rem;
   color: #000;
   text-decoration: none;
+  transition: none;
+}
+
+.logo-link {
+  color: #000;
+  text-decoration: none;
+  transition: none;
+}
+
+.site-title {
+  color: #000;
+  transition: none;
+}
+
+body.features-mode .header-logo,
+body.features-mode .logo-link,
+body.features-mode .site-title,
+body.features-mode .header-text {
+  color: #e7edf9;
 }
 
 .header-star {
@@ -233,6 +273,16 @@ header {
   width: 100%;
   overflow-x: hidden;
   box-sizing: border-box;
+  transform: translateZ(0);
+  transition: backdrop-filter 0.2s ease;
+}
+
+body.features-mode header,
+body.features-mode #main-header {
+  backdrop-filter: none !important;
+  background: rgba(5, 7, 11, 0.9) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+  transition: none !important;
 }
 
 
@@ -253,9 +303,29 @@ nav a {
   color: #000000;
   text-decoration: none;
   font-weight: bold;
+  transition: none;
+}
+
+body.features-mode nav a {
+  color: #e7edf9;
 }
 
 nav a:hover {
+  text-decoration: underline;
+}
+
+body.features-mode nav a:hover {
+  color: #ffffff;
+}
+
+nav a.active {
+  text-decoration: underline;
+  color: #667eea;
+  pointer-events: none;
+}
+
+body.features-mode nav a.active {
+  color: #8fa4ff;
   text-decoration: underline;
 }
 
@@ -268,9 +338,18 @@ main {
   text-align: center;
   background: #ededed;
   color: #000000;
-  transition: background 0.7s ease, color 0.7s ease;
+  transition: background 0.35s ease, color 0.35s ease;
   width: 100%;
   overflow-x: hidden;
+  contain: layout style paint;
+  transform: translateZ(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body,
+  main {
+    transition: none !important;
+  }
 }
 
 .left-aligned-text {
@@ -278,9 +357,7 @@ main {
 }
 
 body.features-mode main {
-  background: radial-gradient(circle at 20% 20%, rgba(36, 90, 255, 0.08), transparent 32%),
-              radial-gradient(circle at 80% 40%, rgba(36, 255, 209, 0.05), transparent 35%),
-              #05070b;
+  background: transparent;
   color: #dfe6fb;
 }
 
@@ -296,14 +373,25 @@ body.features-mode main {
   cursor: pointer;
   font-size: 0.85rem;
   font-weight: 600;
-  transition: all 0.3s ease;
+  transition: none;
   margin-left: 12px;
+}
+
+body.features-mode .lang-toggle {
+  border-color: #e7edf9;
+  color: #e7edf9;
 }
 
 .lang-toggle:hover {
   background: #111;
   color: #fff;
   border-color: #111;
+}
+
+body.features-mode .lang-toggle:hover {
+  background: #e7edf9;
+  color: #05070b;
+  border-color: #e7edf9;
 }
 
 /* ===================== */
@@ -1765,9 +1853,19 @@ body.features-mode .btn-secondary:hover {
   .intro h2 {
     font-size: 1.6rem;
   }
+  
+  .intro {
+    max-width: 100%;
+    margin: 40px 16px;
+    padding: 0;
+    box-sizing: border-box;
+  }
 
   h2 {
     font-size: 1.5rem !important;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    max-width: 100%;
   }
 
   h3 {
@@ -1781,6 +1879,18 @@ body.features-mode .btn-secondary:hover {
 
   main section {
     margin: 40px 0 20px 0;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow-x: hidden;
+  }
+
+  /* Extra safety for demo home & careers */
+  .page-home section,
+  .page-careers section {
+    max-width: 100%;
+    width: 100%;
+    box-sizing: border-box;
+    overflow-x: hidden;
   }
 
   /* Showcase */
@@ -1790,6 +1900,7 @@ body.features-mode .btn-secondary:hover {
     margin: 40px auto;
     padding: 0 12px;
     box-sizing: border-box;
+    overflow-x: hidden;
   }
 
   .showcase-card {
@@ -1802,6 +1913,8 @@ body.features-mode .btn-secondary:hover {
     z-index: 2 !important;
     left: 0 !important;
     top: auto !important;
+    box-sizing: border-box;
+    overflow: hidden;
   }
 
   .showcase-card.prev,
@@ -1812,16 +1925,28 @@ body.features-mode .btn-secondary:hover {
   .showcase-card h3 {
     font-size: 0.95rem;
     bottom: 45px;
-    left: 8px;
-    right: 8px;
+    left: 6px;
+    right: 6px;
+    white-space: normal;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    max-width: calc(100% - 12px);
+    hyphens: auto;
+    overflow: hidden;
   }
 
   .showcase-card p {
     font-size: 0.75rem;
     bottom: 12px;
-    left: 8px;
-    right: 8px;
+    left: 6px;
+    right: 6px;
     line-height: 1.3;
+    white-space: normal;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    max-width: calc(100% - 12px);
+    hyphens: auto;
+    overflow: hidden;
   }
 
   /* Ticker/Banner */
@@ -1844,6 +1969,30 @@ body.features-mode .btn-secondary:hover {
     width: 100%;
     margin-left: auto;
     margin-right: auto;
+  }
+  
+  .page-home .feature-suite {
+    width: 100%;
+    max-width: 100%;
+    margin: 60px 0;
+    padding: 40px 12px !important;
+    box-sizing: border-box;
+    overflow-x: hidden;
+  }
+  
+  .features-section {
+    width: 100%;
+    max-width: 100%;
+    padding: 0 12px;
+    box-sizing: border-box;
+    overflow-x: hidden;
+  }
+  
+  .features-title {
+    font-size: 1.6rem;
+    margin-bottom: 40px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
   }
 
   .feature-heading {
@@ -1870,11 +2019,47 @@ body.features-mode .btn-secondary:hover {
     grid-template-columns: 1fr !important;
     gap: 16px;
     margin: 40px 0 !important;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow-x: hidden;
   }
 
   .feature-block.left,
   .feature-block.right {
     direction: ltr !important;
+  }
+  
+  .feature-text {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    overflow-x: hidden !important;
+    padding: 0 !important;
+  }
+  
+  .apply-form {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .apply-form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .apply-form-group input,
+  .apply-btn {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    padding: 10px 12px !important;
+    font-size: 0.95rem !important;
   }
 
   .feature-meta {
@@ -1892,10 +2077,16 @@ body.features-mode .btn-secondary:hover {
   .feature-image {
     min-height: 220px;
     margin: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box;
   }
 
   .feature-image img {
     border-radius: 8px;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto;
   }
 
   .feature-text {
@@ -2005,6 +2196,9 @@ body.features-mode .btn-secondary:hover {
     margin: 50px auto;
     padding: 40px 16px;
     border-radius: 12px;
+    width: calc(100% - 32px);
+    max-width: 100%;
+    box-sizing: border-box;
   }
 
   .roadmap-header h2 {
@@ -2114,6 +2308,14 @@ body.features-mode .btn-secondary:hover {
     padding: 0px 12px 50px;
     width: 100%;
     overflow-x: hidden;
+  }
+
+  /* Prevent media from causing horizontal scroll */
+  img, video, canvas, svg {
+    max-width: 100%;
+    height: auto;
+    box-sizing: border-box;
+    display: block;
   }
 
   .feature-suite {
@@ -2237,17 +2439,29 @@ body.features-mode .btn-secondary:hover {
   .showcase-card h3 {
     font-size: 0.85rem;
     bottom: 40px;
-    left: 6px;
-    right: 6px;
+    left: 4px;
+    right: 4px;
     font-weight: 600;
+    white-space: normal;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    max-width: calc(100% - 8px);
+    hyphens: auto;
+    overflow: hidden;
   }
 
   .showcase-card p {
     font-size: 0.7rem;
     bottom: 10px;
-    left: 6px;
-    right: 6px;
+    left: 4px;
+    right: 4px;
     line-height: 1.2;
+    white-space: normal;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    max-width: calc(100% - 8px);
+    hyphens: auto;
+    overflow: hidden;
   }
 
   .scroll-banner {

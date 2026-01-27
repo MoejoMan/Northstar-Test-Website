@@ -53,29 +53,27 @@
   </script>
 </head>
 
-<body>
+<body class="{% block body_class %}{% endblock %}">
 <a href="#main-content" class="skip-link">Skip to main content</a>
 <header id="main-header">
-    <h1 class="site-title">
-  <a href="{{ url_for('home') }}" class="logo-link">
-    <span class="header-star">✦</span>
-    <span class="header-text">Northstar</span>
-  </a>
-</h1>
+  <h1 class="site-title">
+    <a href="{{ url_for('home') }}" class="logo-link">
+      <span class="header-star">✦</span>
+      <span class="header-text">Northstar</span>
+    </a>
+  </h1>
 
   <nav id="main-nav">
     <ul>
-      {% if request.endpoint != 'home' %}
-        <li><a href="{{ url_for('home') }}" data-en="Home" data-jp="ホーム">Home</a></li>
-      {% endif %}
-      {% if request.endpoint not in ['demo', 'home', 'demo_careers', 'demo_contact'] %}
-        <li><a href="{{ url_for('demo') }}" data-en="Demo Site" data-jp="デモサイト">Demo Site</a></li>
-      {% endif %}
-      {% if request.endpoint in ['demo', 'demo_careers', 'demo_contact'] %}
-        <li><a href="{{ url_for('demo_careers') }}" data-en="Careers" data-jp="キャリア">Careers</a></li>
-        <li><a href="{{ url_for('demo_contact') }}" data-en="Contact (Demo)" data-jp="お問い合わせ">Contact (Demo)</a></li>
+      {% set is_demo = request.endpoint in ['demo', 'demo_careers', 'demo_contact'] %}
+      <li><a href="{{ url_for('home') }}" class="{% if not is_demo and request.endpoint == 'home' %}active{% endif %}" data-en="Portfolio Home" data-jp="ポートフォリオ">Portfolio Home</a></li>
+      {% if is_demo %}
+        <li><a href="{{ url_for('demo') }}" class="{% if request.endpoint == 'demo' %}active{% endif %}" data-en="Demo Home" data-jp="デモホーム">Demo Home</a></li>
+        <li><a href="{{ url_for('demo_careers') }}" class="{% if request.endpoint == 'demo_careers' %}active{% endif %}" data-en="Careers" data-jp="キャリア">Careers</a></li>
+        <li><a href="{{ url_for('demo_contact') }}" class="{% if request.endpoint == 'demo_contact' %}active{% endif %}" data-en="Contact (Demo)" data-jp="お問い合わせ">Contact (Demo)</a></li>
       {% else %}
-        <li><a href="{{ url_for('contact') }}" data-en="Start Project" data-jp="プロジェクト開始">Start Project</a></li>
+        <li><a href="{{ url_for('demo') }}" data-en="Demo Site" data-jp="デモサイト">Demo Site</a></li>
+        <li><a href="{{ url_for('contact') }}" class="{% if request.endpoint == 'contact' %}active{% endif %}" data-en="Start Project" data-jp="プロジェクト開始">Start Project</a></li>
       {% endif %}
       <li>
         <button id="lang-toggle" class="lang-toggle" aria-label="Toggle language">
@@ -136,12 +134,9 @@
         <span class="tech-separator">•</span>
         <span class="tech-item">CSS3</span>
       </div>
-      <span class="build-time">⚡ Production-ready in ~3 days</span>
     </div>
   </footer>
 
   <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 </body>
 </html>
-
-<body class="{% block body_class %}{% endblock %}">

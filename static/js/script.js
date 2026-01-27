@@ -237,19 +237,14 @@ featureBlocks.forEach((block, index) => {
     cards[current].classList.add('active');
     cards[prev].classList.add('prev');
     cards[next].classList.add('next');
-
-    console.log(`Current: ${current}, Prev: ${prev}, Next: ${next}`);
-    console.log('Card classes:', Array.from(cards).map((c, i) => ({ index: i, classes: c.className })));
   }
 
   function goNext() {
-    console.log('goNext called');
     current = (current + 1) % cards.length;
     updateCards();
   }
 
   function goPrev() {
-    console.log('goPrev called');
     current = (current - 1 + cards.length) % cards.length;
     updateCards();
   }
@@ -259,8 +254,6 @@ featureBlocks.forEach((block, index) => {
     rotateTimer = setInterval(goNext, 10000);
   }
 
-  console.log('Showcase:', showcase, 'Cards:', cards.length);
-
   if (cards.length > 0) {
     updateCards();
     startRotation();
@@ -268,23 +261,17 @@ featureBlocks.forEach((block, index) => {
     // Single delegated click handler on showcase section
     if (showcase) {
       showcase.addEventListener('click', (e) => {
-        console.log('Click event fired, target:', e.target);
         const img = e.target.closest('.showcase-card img');
-        console.log('Found img?', img);
         if (!img) return;
 
         const card = img.closest('.showcase-card');
-        console.log('Card classes:', card.className);
         if (card.classList.contains('prev')) {
-          console.log('Clicking prev');
           goPrev();
           startRotation();
         } else if (card.classList.contains('next')) {
-          console.log('Clicking next');
           goNext();
           startRotation();
         }
-        // 'active' card has no action
       });
     }
   }
@@ -320,8 +307,12 @@ featureBlocks.forEach((block, index) => {
 
   if (featureSection) {
     const featureBlocks = featureSection.querySelectorAll('.feature-block');
+    let featureModeActive = false;
 
     const ensureFeatureState = inView => {
+      if (inView === featureModeActive) return; // prevent redundant toggles
+      featureModeActive = inView;
+
       featureSection.classList.toggle('is-active', inView);
       document.body.classList.toggle('features-mode', inView);
 
@@ -330,12 +321,21 @@ featureBlocks.forEach((block, index) => {
       }
     };
 
+    let rafPending = false;
+
     const manualCheck = () => {
       const rect = featureSection.getBoundingClientRect();
       const viewport = window.innerHeight || document.documentElement.clientHeight;
-      const inView = rect.top < viewport * 0.8 && rect.bottom > viewport * 0.2;
+      const inView = rect.top < viewport * 0.6 && rect.bottom > viewport * 0.4;
 
       ensureFeatureState(inView);
+      rafPending = false;
+    };
+
+    const throttledCheck = () => {
+      if (rafPending) return;
+      rafPending = true;
+      requestAnimationFrame(manualCheck);
     };
 
     // Primary observer path (with passive scroll fallback)
@@ -346,7 +346,7 @@ featureBlocks.forEach((block, index) => {
             ensureFeatureState(entry.isIntersecting);
           });
         },
-        { threshold: 0.35 }
+        { threshold: 0.5, rootMargin: '0px' }
       );
 
       featureObserver.observe(featureSection);
@@ -375,8 +375,8 @@ featureBlocks.forEach((block, index) => {
       setTimeout(manualCheck, 250);
     });
 
-    window.addEventListener('resize', manualCheck);
-    window.addEventListener('scroll', manualCheck, { passive: true });
+    window.addEventListener('resize', throttledCheck);
+    window.addEventListener('scroll', throttledCheck, { passive: true });
   }
 
   // -----------------------
