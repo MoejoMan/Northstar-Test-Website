@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% block title %}Portfolio | Web Design Services{% endblock %}
+{% block body_class %}page-portfolio{% endblock %}
 {% block content %}
 
 <div id="splash">
@@ -34,7 +35,7 @@
 <hr class="divider">
 
 <section class="showcase fade-in">
-  <h2 data-en="Featured Work" data-jp="制作実績" style="padding: 0 2rem;">Featured Work</h2>
+  <h2 data-en="Featured Work" data-jp="制作実績">Featured Work</h2>
   
   <div class="portfolio-project">
     <div class="project-preview">
@@ -180,6 +181,21 @@
 </section>
 
 <style>
+.page-portfolio .showcase {
+  display: block;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto 80px;
+  padding: 0 16px;
+  height: auto;
+  align-items: flex-start;
+}
+
+.page-portfolio .showcase h2 {
+  margin-bottom: 32px;
+  text-align: left;
+}
+
 .portfolio-project {
   max-width: 1200px;
   margin: 60px auto;
