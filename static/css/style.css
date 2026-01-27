@@ -2138,6 +2138,11 @@ body.features-mode .btn-secondary:hover {
     font-size: 1rem;
   }
 
+  .submit-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
   .contact-details {
     grid-template-columns: 1fr !important;
     gap: 20px !important;

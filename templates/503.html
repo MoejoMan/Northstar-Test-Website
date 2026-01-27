@@ -1,0 +1,193 @@
+{% extends 'base.html' %}
+{% block title %}Maintenance | Northstar{% endblock %}
+{% block body_class %}page-503{% endblock %}
+
+{% block content %}
+<div id="splash" class="splash-hide">
+  <div class="splash-logo">
+    <span class="splash-star">✦</span>
+    <span class="splash-text">Northstar</span>
+  </div>
+</div>
+
+<section class="hero-gradient">
+  <div class="error-container">
+    <div class="maintenance-icon">
+      <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="40" cy="40" r="38" stroke="currentColor" stroke-width="2"/>
+        <path d="M40 20v20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        <circle cx="40" cy="60" r="3" fill="currentColor"/>
+      </svg>
+    </div>
+    <h1 class="error-code" data-en="503" data-jp="メンテナンス中">503</h1>
+    <h2 class="error-title" data-en="Under Maintenance" data-jp="メンテナンス中">Under Maintenance</h2>
+    <p class="error-message" data-en="We're working to improve your experience. We'll be back online shortly. Thank you for your patience." data-jp="サイトを改善中です。すぐにオンラインに戻ります。ご迷惑をおかけして申し訳ございません。">
+      We're working to improve your experience. We'll be back online shortly. Thank you for your patience.
+    </p>
+    <div class="maintenance-eta" data-en="Expected to resume:" data-jp="復旧予定時刻:">Expected to resume: <span class="eta-time">{{ eta or 'Shortly' }}</span></div>
+    <div class="error-actions">
+      <a href="javascript:location.reload()" class="error-link" data-en="Retry" data-jp="再度試す">Retry</a>
+      <a href="mailto:info@northstar.dev?subject=Northstar%20Inquiry" class="error-link secondary" data-en="Email Us" data-jp="メールで連絡">Email Us</a>
+    </div>
+  </div>
+</section>
+
+<style>
+.page-503 main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 70vh;
+}
+
+.error-container {
+  text-align: center;
+  padding: 4rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 600px;
+}
+
+.maintenance-icon {
+  font-size: 80px;
+  color: #4a90e2;
+  margin-bottom: 2rem;
+  animation: slideDown 0.6s ease-out;
+}
+
+body.features-mode .maintenance-icon {
+  color: #64b5f6;
+}
+
+.maintenance-icon svg {
+  width: 80px;
+  height: 80px;
+  stroke: currentColor;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.error-code {
+  font-size: clamp(4rem, 15vw, 8rem);
+  font-weight: 700;
+  margin: 0;
+  background: linear-gradient(135deg, #4a90e2 0%, #357abd 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: 0.1em;
+}
+
+.error-title {
+  font-size: 2rem;
+  margin: 2rem 0 1rem;
+  color: #111;
+}
+
+body.features-mode .error-title {
+  color: #f5f5f7;
+}
+
+.error-message {
+  font-size: 1.05rem;
+  color: #666;
+  max-width: 100%;
+  margin: 1.5rem 0 1rem;
+  line-height: 1.6;
+}
+
+body.features-mode .error-message {
+  color: #ccc;
+}
+
+.maintenance-eta {
+  font-size: 0.95rem;
+  color: #999;
+  margin: 1.5rem 0 2.5rem;
+  font-style: italic;
+}
+
+body.features-mode .maintenance-eta {
+  color: #999;
+}
+
+.eta-time {
+  font-weight: 600;
+  color: #4a90e2;
+}
+
+body.features-mode .eta-time {
+  color: #64b5f6;
+}
+
+.error-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.error-link {
+  padding: 0.85rem 2rem;
+  border: 2px solid #000;
+  background: #000;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 4px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+.error-link:hover {
+  background: #333;
+  border-color: #333;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.error-link.secondary {
+  background: transparent;
+  color: #000;
+  border-color: #000;
+}
+
+.error-link.secondary:hover {
+  background: #000;
+  color: #fff;
+}
+
+body.features-mode .error-link {
+  border-color: #f5f5f7;
+  background: #f5f5f7;
+  color: #000;
+}
+
+body.features-mode .error-link:hover {
+  background: #e0e0e0;
+  border-color: #e0e0e0;
+}
+
+body.features-mode .error-link.secondary {
+  background: transparent;
+  color: #f5f5f7;
+  border-color: #f5f5f7;
+}
+
+body.features-mode .error-link.secondary:hover {
+  background: #f5f5f7;
+  color: #000;
+}
+</style>
+{% endblock %}

@@ -72,9 +72,9 @@
           <label for="service">What service are you interested in? / ご希望のサービス</label>
           <select id="service" name="service" required>
             <option value="">Select an option...</option>
-            <option value="basic">Basic Website (¥150k-300k)</option>
-            <option value="professional">Professional Website (¥300k-600k)</option>
-            <option value="enterprise">Enterprise Solution (¥600k+)</option>
+            <option value="starter">Starter Website</option>
+            <option value="professional">Professional Website</option>
+            <option value="enterprise">Enterprise Solution</option>
             <option value="custom">Custom / Other</option>
           </select>
         </div>
@@ -84,8 +84,82 @@
           <textarea id="message" name="message" rows="6" placeholder="Tell us about your business, goals, and timeline..." required></textarea>
         </div>
 
+        <input type="text" name="website" aria-hidden="true" tabindex="-1" autocomplete="off" style="position:absolute; left:-9999px; top:-9999px; height:0; width:0;" />
+
+        <div class="form-group">
+          <label class="consent-label">
+            <input type="checkbox" name="consent" required>
+            <span>I agree to the <a href="{{ url_for('privacy') }}">Privacy Policy</a> and <a href="{{ url_for('terms') }}">Terms</a>.</span>
+          </label>
+        </div>
+
         <button type="submit" class="submit-btn">Send Inquiry / 送信</button>
       </form>
+
+      <script>
+      document.querySelector('.contact-form').addEventListener('submit', function(e) {
+        const btn = this.querySelector('.submit-btn');
+        btn.disabled = true;
+        btn.setAttribute('data-original', btn.textContent);
+        btn.textContent = 'Sending...';
+      });
+
+      // Real-time form validation
+      const form = document.querySelector('.contact-form');
+      const inputs = form.querySelectorAll('input, textarea, select');
+      
+      inputs.forEach(input => {
+        input.addEventListener('blur', function() {
+          validateField(this);
+        });
+        input.addEventListener('input', function() {
+          if (this.classList.contains('error')) {
+            validateField(this);
+          }
+        });
+      });
+
+      function validateField(field) {
+        let isValid = true;
+        let errorMsg = '';
+
+        if (field.hasAttribute('required') && !field.value.trim()) {
+          isValid = false;
+          errorMsg = 'This field is required';
+        } else if (field.type === 'email' && field.value.trim()) {
+          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          if (!emailRegex.test(field.value)) {
+            isValid = false;
+            errorMsg = 'Please enter a valid email';
+          }
+        } else if (field.type === 'tel' && field.value.trim()) {
+          const phoneRegex = /^[\d\s\-\+\(\)]+$/;
+          if (!phoneRegex.test(field.value) || field.value.length < 7) {
+            isValid = false;
+            errorMsg = 'Please enter a valid phone number';
+          }
+        }
+
+        if (!isValid) {
+          field.classList.add('error');
+          removeErrorMsg(field);
+          const errorEl = document.createElement('span');
+          errorEl.className = 'field-error';
+          errorEl.textContent = errorMsg;
+          field.parentElement.appendChild(errorEl);
+        } else {
+          field.classList.remove('error');
+          removeErrorMsg(field);
+        }
+
+        return isValid;
+      }
+
+      function removeErrorMsg(field) {
+        const existing = field.parentElement.querySelector('.field-error');
+        if (existing) existing.remove();
+      }
+      </script>
     </div>
 
     <div class="contact-info">
@@ -111,7 +185,7 @@
 
         <div>
           <span class="contact-label">Typical Timeline / 一般的な納期</span>
-          <p>2-3 weeks / 2-3週間</p>
+          <p>Scoped with you / 要件に応じて決定</p>
         </div>
       </div>
     </div>
@@ -284,6 +358,13 @@ body.features-mode .form-group select {
   box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
 }
 
+.consent-label {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 0.95rem;
+}
+
 .submit-btn {
   padding: 0.85rem 2rem;
   background: #000;
@@ -412,6 +493,36 @@ body.features-mode .contact-details p {
 
 body.features-mode .step p {
   color: #999;
+}
+
+.submit-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.field-error {
+  color: #d32f2f;
+  font-size: 0.85rem;
+  margin-top: 0.4rem;
+  display: block;
+}
+
+body.features-mode .field-error {
+  color: #ef5350;
+}
+
+.form-group input.error,
+.form-group textarea.error,
+.form-group select.error {
+  border-color: #d32f2f;
+  background-color: #ffebee;
+}
+
+body.features-mode .form-group input.error,
+body.features-mode .form-group textarea.error,
+body.features-mode .form-group select.error {
+  border-color: #ef5350;
+  background-color: rgba(239, 83, 80, 0.1);
 }
 
 @media (max-width: 1024px) {

@@ -1,9 +1,8 @@
 {% extends 'base.html' %}
-{% block title %}Page Not Found | Northstar{% endblock %}
-{% block body_class %}page-404{% endblock %}
+{% block title %}Access Denied | Northstar{% endblock %}
+{% block body_class %}page-403{% endblock %}
 
 {% block content %}
-
 <div id="splash" class="splash-hide">
   <div class="splash-logo">
     <span class="splash-star">✦</span>
@@ -13,20 +12,20 @@
 
 <section class="hero-gradient">
   <div class="error-container">
-    <h1 class="error-code" data-en="404" data-jp="エラー">404</h1>
-    <h2 class="error-title" data-en="Page Not Found" data-jp="ページが見つかりません">Page Not Found</h2>
-    <p class="error-message" data-en="The page you're looking for doesn't exist or has been moved. Let's get you back to solid ground." data-jp="お探しのページが見つかりません。以下のリンクから戻ってください。">
-      The page you're looking for doesn't exist or has been moved. Let's get you back to solid ground.
+    <h1 class="error-code" data-en="403" data-jp="禁止">403</h1>
+    <h2 class="error-title" data-en="Access Denied" data-jp="アクセスが拒否されました">Access Denied</h2>
+    <p class="error-message" data-en="You don't have permission to access this resource. If you believe this is a mistake, please contact us." data-jp="このリソースへのアクセス権限がありません。誤りと思われる場合はお問い合わせください。">
+      You don't have permission to access this resource. If you believe this is a mistake, please contact us.
     </p>
     <div class="error-actions">
       <a href="{{ url_for('home') }}" class="error-link" data-en="Return to Portfolio" data-jp="ポートフォリオに戻る">Return to Portfolio</a>
-      <a href="{{ url_for('demo') }}" class="error-link secondary" data-en="View Demo" data-jp="デモを表示">View Demo</a>
+      <a href="{{ url_for('contact') }}" class="error-link secondary" data-en="Contact Us" data-jp="お問い合わせ">Contact Us</a>
     </div>
   </div>
 </section>
 
 <style>
-.page-404 main {
+.page-403 main {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -47,17 +46,11 @@
   font-size: clamp(4rem, 15vw, 8rem);
   font-weight: 700;
   margin: 0;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   letter-spacing: 0.1em;
-  animation: floatError 3s ease-in-out infinite;
-}
-
-@keyframes floatError {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-20px); }
 }
 
 .error-title {
@@ -140,52 +133,5 @@ body.features-mode .error-link.secondary:hover {
   background: #f5f5f7;
   color: #000;
 }
-
-.error-link.secondary:hover {
-  background: #f0f0f0;
-}
-
-body.features-mode .error-link {
-  border-color: #f5f5f7;
-  background: #f5f5f7;
-  color: #000;
-}
-
-body.features-mode .error-link:hover {
-  background: #e0e0e0;
-  border-color: #e0e0e0;
-}
-
-body.features-mode .error-link.secondary {
-  background: transparent;
-  color: #f5f5f7;
-  border-color: #f5f5f7;
-}
-
-body.features-mode .error-link.secondary:hover {
-  background: rgba(245, 245, 247, 0.1);
-  border-color: #f5f5f7;
-}
-
-@media (max-width: 768px) {
-  .error-code {
-    font-size: 4rem;
-  }
-  
-  .error-title {
-    font-size: 1.5rem;
-  }
-  
-  .error-actions {
-    flex-direction: column;
-    width: 100%;
-  }
-  
-  .error-link {
-    width: 100%;
-    text-align: center;
-  }
-}
 </style>
-
 {% endblock %}

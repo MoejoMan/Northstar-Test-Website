@@ -65,8 +65,76 @@
           <textarea id="message" name="message" rows="6" required></textarea>
         </div>
 
+        <input type="text" name="website" aria-hidden="true" tabindex="-1" autocomplete="off" style="position:absolute; left:-9999px; top:-9999px; height:0; width:0;" />
+
+        <div class="form-group">
+          <label class="consent-label">
+            <input type="checkbox" name="consent" required>
+            <span>I agree to the <a href="{{ url_for('privacy') }}">Privacy Policy</a> and <a href="{{ url_for('terms') }}">Terms</a>.</span>
+          </label>
+        </div>
+
         <button type="submit" class="submit-btn">Send Message</button>
       </form>
+
+      <script>
+      document.querySelector('.contact-form').addEventListener('submit', function(e) {
+        const btn = this.querySelector('.submit-btn');
+        btn.disabled = true;
+        btn.setAttribute('data-original', btn.textContent);
+        btn.textContent = 'Sending...';
+      });
+
+      // Real-time form validation
+      const form = document.querySelector('.contact-form');
+      const inputs = form.querySelectorAll('input, textarea, select');
+      
+      inputs.forEach(input => {
+        input.addEventListener('blur', function() {
+          validateField(this);
+        });
+        input.addEventListener('input', function() {
+          if (this.classList.contains('error')) {
+            validateField(this);
+          }
+        });
+      });
+
+      function validateField(field) {
+        let isValid = true;
+        let errorMsg = '';
+
+        if (field.hasAttribute('required') && !field.value.trim()) {
+          isValid = false;
+          errorMsg = 'This field is required';
+        } else if (field.type === 'email' && field.value.trim()) {
+          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          if (!emailRegex.test(field.value)) {
+            isValid = false;
+            errorMsg = 'Please enter a valid email';
+          }
+        }
+
+        if (!isValid) {
+          field.classList.add('error');
+          removeErrorMsg(field);
+          const errorEl = document.createElement('span');
+          errorEl.className = 'field-error';
+          errorEl.textContent = errorMsg;
+          field.parentElement.appendChild(errorEl);
+        } else {
+          field.classList.remove('error');
+          removeErrorMsg(field);
+        }
+
+        return isValid;
+      }
+
+      function removeErrorMsg(field) {
+        const existing = field.parentElement.querySelector('.field-error');
+        if (existing) existing.remove();
+      }
+      </script>
     </div>
 
     <div class="contact-info">
@@ -214,6 +282,13 @@ body.features-mode .form-group textarea {
   box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
 }
 
+.consent-label {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 0.95rem;
+}
+
 .submit-btn {
   padding: 0.85rem 2rem;
   background: #000;
@@ -292,6 +367,34 @@ body.features-mode .contact-details a {
 
 .contact-details a:hover::after {
   width: 100%;
+}
+
+.submit-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.field-error {
+  color: #d32f2f;
+  font-size: 0.85rem;
+  margin-top: 0.4rem;
+  display: block;
+}
+
+body.features-mode .field-error {
+  color: #ef5350;
+}
+
+.form-group input.error,
+.form-group textarea.error {
+  border-color: #d32f2f;
+  background-color: #ffebee;
+}
+
+body.features-mode .form-group input.error,
+body.features-mode .form-group textarea.error {
+  border-color: #ef5350;
+  background-color: rgba(239, 83, 80, 0.1);
 }
 
 @media (max-width: 1024px) {

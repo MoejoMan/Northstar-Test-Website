@@ -10,6 +10,7 @@
 
 <meta name="description" content="A sleek, modern test website template showcasing smooth animations, responsive layouts, and clean UI elements — perfect for experiments, demos, or learning projects.">
 
+  <link rel="icon" href="{{ url_for('static', filename='favicon.svg') }}" type="image/svg+xml">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -89,6 +90,12 @@
 
   <footer>
     <p>&copy; 2025 Northstar. All rights reserved.</p>
+
+    <div class="footer-links">
+      <a href="{{ url_for('privacy') }}">Privacy Policy</a>
+      <span class="divider-dot">•</span>
+      <a href="{{ url_for('terms') }}">Terms of Service</a>
+    </div>
     
     <div class="social-links">
       <a href="https://line.me/ti/p/YOUR_LINE_ID" aria-label="LINE" target="_blank" rel="noopener">
