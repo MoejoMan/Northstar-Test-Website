@@ -278,7 +278,17 @@ nav ul {
 
 nav ul li {
   display: inline;
+  margin: 0;
+}
+
+nav ul li + li::before {
+  content: "|";
   margin: 0 10px;
+  color: #9aa0a6;
+}
+
+body.features-mode nav ul li + li::before {
+  color: rgba(255, 255, 255, 0.45);
 }
 
 nav a {
